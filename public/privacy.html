@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050a14">
+<title>Aiyelet - Privacy Policy</title>
+<link rel="canonical" href="https://aiyelet.co/privacy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/aiyelet-logo-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/aiyelet-logo-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/aiyelet-logo-180.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Inter", "Heebo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: #e2e8f0;
+    background: #050a14;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  ul { list-style: none; }
+
+  /* Language Toggle */
+  [data-he] { display: none; }
+  html.he [data-en] { display: none; }
+  html.he [data-he] { display: revert; }
+
+  :root {
+    --green: #16a34a;
+    --green-dark: #15803d;
+    --green-deeper: #0f5132;
+    --green-glow: rgba(22, 163, 74, 0.25);
+    --green-subtle: rgba(22, 163, 74, 0.07);
+    --bg-deep: #050a14;
+    --bg-dark: #0a1220;
+    --bg-darker: #080f1c;
+    --bg-light: #f5f8f5;
+    --bg-white: #ffffff;
+    --text-white: #f1f5f9;
+    --text-light: #94a3b8;
+    --text-muted: #64748b;
+    --text-dark: #0f172a;
+    --text-dark-secondary: #475569;
+    --border-green: rgba(22, 163, 74, 0.15);
+    --border-light: rgba(0, 0, 0, 0.06);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --radius-full: 50px;
+    --container: 1140px;
+    --header-h: 72px;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--green);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
+  }
+  .btn-sm { padding: 10px 24px; font-size: 0.9rem; }
+
+  /* Header */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    background: rgba(5, 10, 20, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--border-green);
+  }
+  .header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+  .logo img { height: 160px; width: auto; }
+  .logo .logo-mobile { display: none; }
+  .logo span { color: var(--green); }
+  .nav { display: flex; align-items: center; gap: 32px; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--text-light);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+  .lang-toggle {
+    display: flex;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 2px;
+    gap: 1px;
+  }
+  .lang-toggle button {
+    padding: 3px 8px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.25s ease;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.3px;
+  }
+  .lang-toggle button:hover:not(.active) {
+    color: var(--text-white);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .lang-toggle button.active {
+    background: var(--green);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+  }
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+  }
+  .mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    background: rgba(5, 10, 20, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 24px;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-green);
+    z-index: 99;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .mobile-menu a.btn {
+    color: #fff;
+    border-bottom: none;
+  }
+
+  /* Content */
+  .page-content {
+    padding: calc(var(--header-h) + 48px) 0 80px;
+    background: var(--bg-dark);
+    min-height: calc(100vh - var(--header-h) - 100px);
+  }
+  .page-content .container {
+    max-width: 780px;
+  }
+  .page-content h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .page-content .updated {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 36px;
+  }
+  .page-content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 36px 0 14px;
+  }
+  .page-content p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .page-content ul {
+    list-style: disc;
+    padding-inline-start: 1.5rem;
+    margin-bottom: 14px;
+  }
+  .page-content li {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .page-content strong {
+    color: #cbd5e1;
+  }
+  .page-content a {
+    color: var(--green);
+    transition: color 0.2s;
+  }
+  .page-content a:hover {
+    color: var(--green-dark);
+  }
+
+  /* Footer */
+  .footer {
+    padding: 0;
+    background: var(--bg-deep);
+    border-top: 1px solid var(--border-green);
+  }
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 48px;
+    padding: 20px 0 24px;
+  }
+  .footer-brand img {
+    height: 130px;
+    margin-bottom: 16px;
+  }
+.footer-col-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--green); }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .footer-contact-item svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+    opacity: 0.7;
+  }
+  .footer-contact-item a {
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .footer-contact-item a:hover { color: var(--green); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .footer-reg {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .logo .logo-desktop { display: none; }
+    .logo .logo-mobile { display: block; height: 50px; }
+    .nav-links, .nav .btn, .nav .lang-toggle { display: none; }
+    .mobile-toggle { display: flex; }
+    .footer-main { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+.footer-brand img { margin-inline: auto; }
+    .footer-contact-item { justify-content: center; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .page-content h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <a href="/" class="logo"><img class="logo-desktop" src="/images/aiyelet-horizontal-dark-transparent.png" alt="Aiyelet logo"><img class="logo-mobile" src="/images/aiyelet-logo-2048-transparent.png" alt="Aiyelet logo"></a>
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="/#features"><span data-he>תכונות</span><span data-en>Features</span></a>
+        <a href="/#how-it-works"><span data-he>איך זה עובד</span><span data-en>How it Works</span></a>
+        <a href="/#demo"><span data-he>הדגמה</span><span data-en>Demo</span></a>
+        <a href="/#pricing"><span data-he>מחירון</span><span data-en>Pricing</span></a>
+        <a href="/#faq"><span data-he>שאלות נפוצות</span><span data-en>FAQ</span></a>
+      </div>
+      <div class="lang-toggle" dir="ltr">
+        <button id="btn-he" onclick="setLang('he')">🇮🇱 HE</button>
+        <button id="btn-en" class="active" onclick="setLang('en')">🇺🇸 EN</button>
+      </div>
+      <a href="https://wa.me/972500000000" class="btn btn-primary btn-sm">
+        <span data-he>התחילו עכשיו</span><span data-en>Get Started</span>
+      </a>
+    </nav>
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/#features" onclick="closeMobile()"><span data-he>תכונות</span><span data-en>Features</span></a>
+  <a href="/#how-it-works" onclick="closeMobile()"><span data-he>איך זה עובד</span><span data-en>How it Works</span></a>
+  <a href="/#demo" onclick="closeMobile()"><span data-he>הדגמה</span><span data-en>Demo</span></a>
+  <a href="/#pricing" onclick="closeMobile()"><span data-he>מחירון</span><span data-en>Pricing</span></a>
+  <a href="/#faq" onclick="closeMobile()"><span data-he>שאלות נפוצות</span><span data-en>FAQ</span></a>
+  <div class="lang-toggle" dir="ltr" style="align-self: flex-start;">
+    <button onclick="setLang('he');closeMobile()">🇮🇱 HE</button>
+    <button class="active" onclick="setLang('en');closeMobile()">🇺🇸 EN</button>
+  </div>
+  <a href="https://wa.me/972500000000" class="btn btn-primary" style="align-self: stretch; text-align: center; justify-content: center;">
+    <span data-he>התחילו עכשיו</span><span data-en>Get Started</span>
+  </a>
+</div>
+
+<!-- Content -->
+<main class="page-content">
+  <div class="container">
+    <h1><span data-he>מדיניות פרטיות</span><span data-en>Privacy Policy</span></h1>
+    <p class="updated"><span data-he>עדכון אחרון: 12 באפריל, 2026</span><span data-en>Last updated: April 12, 2026</span></p>
+
+    <p>
+      <span data-he>Aiyelet, מופעל על ידי LUCON LABS ("אנחנו", "שלנו") מספקת שירות עוזרת וואטסאפ מבוססת בינה מלאכותית לעסקים. מדיניות פרטיות זו מסבירה כיצד אנו אוספים, משתמשים ומגנים על מידע כאשר עסקים ולקוחותיהם משתמשים בשירות שלנו.</span>
+      <span data-en>Aiyelet, operated by LUCON LABS ("we", "our", "us") provides an AI-powered WhatsApp assistant service for businesses. This Privacy Policy explains how we collect, use, and protect information when businesses and their customers use our service.</span>
+    </p>
+
+    <h2><span data-he>1. מידע שאנו אוספים</span><span data-en>1. Information We Collect</span></h2>
+    <p>
+      <span data-he><strong>מידע עסקי:</strong> כאשר עסק נרשם, אנו אוספים את שם העסק, מספר הוואטסאפ, מזהה חשבון WhatsApp Business, והעדפות תצורה (הנחיות מערכת, כתובת אתר, הגדרות לוח זמנים).</span>
+      <span data-en><strong>Business information:</strong> When a business signs up, we collect their business name, WhatsApp phone number, WhatsApp Business Account ID, and configuration preferences (system prompt, website URL, scheduling settings).</span>
+    </p>
+    <p>
+      <span data-he><strong>הודעות לקוחות:</strong> כאשר לקוחות שולחים הודעה לעסק דרך וואטסאפ, אנו מעבדים את תוכן ההודעה כדי לייצר תשובות. ההודעות נשמרות כהיסטוריית שיחה לצורך הקשר לאינטראקציות עתידיות.</span>
+      <span data-en><strong>Customer messages:</strong> When customers message a business through WhatsApp, we process the message content to generate AI-powered replies. Messages are stored as conversation history to provide context for future interactions.</span>
+    </p>
+    <p>
+      <span data-he><strong>זיכרון לקוחות:</strong> אנו עשויים לחלץ ולשמור עובדות מפתח משיחות (למשל, העדפות לקוחות) כדי לשפר את חוויית השירות. לעסקים יש אפשרות לצפות ולמחוק מידע זה.</span>
+      <span data-en><strong>Customer memory:</strong> We may extract and store key facts from conversations (e.g., customer preferences) to improve the service experience. Businesses can view and delete this data.</span>
+    </p>
+    <p>
+      <span data-he><strong>נתוני אתר:</strong> אם עסק מספק כתובת אתר, אנו עשויים לסרוק תוכן נגיש לציבור כדי לעזור לאיילת לענות על שאלות לגבי העסק.</span>
+      <span data-en><strong>Website data:</strong> If a business provides a website URL, we may scrape publicly available content to help Aiyelet answer questions about the business.</span>
+    </p>
+    <p>
+      <span data-he><strong>פערי ידע:</strong> אנו מזהים ושומרים שאלות שאיילת לא הצליחה לענות עליהן, כדי לאפשר לעסק להוסיף תשובות ולשפר את השירות באופן שוטף.</span>
+      <span data-en><strong>Knowledge gaps:</strong> We identify and store questions that Aiyelet could not answer, allowing the business to add responses and continuously improve the service.</span>
+    </p>
+
+    <h2><span data-he>2. כיצד אנו משתמשים במידע</span><span data-en>2. How We Use Information</span></h2>
+    <ul>
+      <li><span data-he>ייצור תשובות מבוססות AI להודעות לקוחות בשם העסק</span><span data-en>Generate AI-powered replies to customer messages on behalf of businesses</span></li>
+      <li><span data-he>ניהול קביעת תורים כאשר מוגדר על ידי העסק</span><span data-en>Manage appointment scheduling when configured by the business</span></li>
+      <li><span data-he>העברת שיחות לבעלי העסק כאשר נדרש</span><span data-en>Escalate conversations to business owners when needed</span></li>
+      <li><span data-he>שליחת התראות לבעלי עסקים דרך טלגרם (הסלמות והזמנות)</span><span data-en>Send notifications to business owners via Telegram (escalations and bookings)</span></li>
+      <li><span data-he>שמירת היסטוריית שיחות להקשר ותמצות שיחות ארוכות</span><span data-en>Maintain conversation history for context and summarize long conversations</span></li>
+      <li><span data-he>שיפור ותחזוקת השירות</span><span data-en>Improve and maintain the service</span></li>
+    </ul>
+
+    <h2><span data-he>3. שירותי צד שלישי</span><span data-en>3. Third-Party Services</span></h2>
+    <p><span data-he>אנו משתמשים בשירותי צד שלישי הבאים להפעלת השירות:</span><span data-en>We use the following third-party services to operate:</span></p>
+    <ul>
+      <li><span data-he><strong>Meta (WhatsApp Cloud API):</strong> לשליחה וקבלה של הודעות וואטסאפ</span><span data-en><strong>Meta (WhatsApp Cloud API):</strong> To send and receive WhatsApp messages</span></li>
+      <li><span data-he><strong>Google (Gemini AI):</strong> לייצור תשובות מבוססות AI. תוכן ההודעות נשלח ל-Gemini API של Google לעיבוד</span><span data-en><strong>Google (Gemini AI):</strong> To generate AI-powered replies. Message content is sent to Google's Gemini API for processing</span></li>
+      <li><span data-he><strong>Google Calendar:</strong> כאשר מוגדר, נתוני תורים עשויים להיות מסונכרנים עם Google Calendar של העסק</span><span data-en><strong>Google Calendar:</strong> When configured, appointment data may be synced with the business's Google Calendar</span></li>
+      <li><span data-he><strong>ספקי לוח זמנים:</strong> כאשר מוגדר, נתוני תורים עשויים לעבור לספק לוח הזמנים של העסק (למשל Cal.com, Acuity, Calendly, Square)</span><span data-en><strong>Scheduling providers:</strong> When configured, appointment data may be shared with the business's scheduling provider (e.g., Cal.com, Acuity, Calendly, Square)</span></li>
+      <li><span data-he><strong>Telegram Bot API:</strong> לשליחת התראות לבעלי עסקים (הסלמות, הזמנות תורים, תזכורות)</span><span data-en><strong>Telegram Bot API:</strong> To send notifications to business owners (escalations, appointment bookings, reminders)</span></li>
+    </ul>
+
+    <h2><span data-he>4. שמירת מידע</span><span data-en>4. Data Retention</span></h2>
+    <p>
+      <span data-he>היסטוריית שיחות נשמרת עד 90 יום כברירת מחדל, ולאחר מכן נמחקת אוטומטית. עסקים יכולים להגדיר תקופה זו. עובדות זיכרון לקוחות נשמרות עד שנמחקות ידנית על ידי העסק.</span>
+      <span data-en>Conversation history is retained for up to 90 days by default, after which it is automatically deleted. Businesses can configure this period. Customer memory facts are retained until manually deleted by the business.</span>
+    </p>
+
+    <h2><span data-he>5. אבטחת מידע</span><span data-en>5. Data Security</span></h2>
+    <p><span data-he>אנו מיישמים אמצעי אבטחה להגנה על מידע, כולל:</span><span data-en>We implement security measures to protect data, including:</span></p>
+    <ul>
+      <li><span data-he>הצפנת אסימוני גישה של וואטסאפ במנוחה (AES-256-GCM)</span><span data-en>Encryption of WhatsApp access tokens at rest (AES-256-GCM)</span></li>
+      <li><span data-he>אימות חתימה HMAC-SHA256 ב-webhook</span><span data-en>HMAC-SHA256 webhook signature verification</span></li>
+      <li><span data-he>HTTPS לכל התקשורת</span><span data-en>HTTPS for all communications</span></li>
+      <li><span data-he>אימות מבוסס session עם עוגיות httpOnly</span><span data-en>Session-based authentication with httpOnly cookies</span></li>
+    </ul>
+
+    <h2><span data-he>6. שיתוף מידע</span><span data-en>6. Data Sharing</span></h2>
+    <p>
+      <span data-he>אנו לא מוכרים או משתפים מידע אישי עם צדדים שלישיים למטרות שיווקיות. מידע משותף רק עם שירותי הצד השלישי המפורטים לעיל כנדרש להפעלת השירות.</span>
+      <span data-en>We do not sell or share personal data with third parties for marketing purposes. Data is only shared with the third-party services listed above as necessary to operate the service.</span>
+    </p>
+
+    <h2><span data-he>7. זכויות בעלי עסקים</span><span data-en>7. Business Owner Rights</span></h2>
+    <p><span data-he>בעלי עסקים יכולים:</span><span data-en>Business owners can:</span></p>
+    <ul>
+      <li><span data-he>צפייה וניהול כל נתוני השיחות דרך לוח הבקרה</span><span data-en>View and manage all conversation data through the admin dashboard</span></li>
+      <li><span data-he>צפייה ומחיקה של נתוני זיכרון לקוחות</span><span data-en>View and delete customer memory data</span></li>
+      <li><span data-he>מחיקת נתוני אתר שנסרקו</span><span data-en>Delete scraped website data</span></li>
+      <li><span data-he>ניהול פערי ידע ותשובות</span><span data-en>Manage knowledge gaps and responses</span></li>
+      <li><span data-he>השבתת החשבון</span><span data-en>Deactivate their account</span></li>
+      <li><span data-he>בקשת מחיקה מלאה של חשבון העסק וכל המידע הקשור אליו (שיחות, זיכרון לקוחות, דפים שנסרקו, פערי ידע) על ידי פנייה ל-<a href="mailto:privacy@aiyelet.co">privacy@aiyelet.co</a></span><span data-en>Request full deletion of their business account and all associated data (conversations, customer memory, scraped pages, knowledge gaps) by contacting <a href="mailto:privacy@aiyelet.co">privacy@aiyelet.co</a></span></li>
+    </ul>
+
+    <h2><span data-he>8. זכויות לקוחות</span><span data-en>8. Customer Rights</span></h2>
+    <p>
+      <span data-he>לקוחות קצה שמתקשרים עם עסקים דרך השירות שלנו יכולים לבקש מחיקת מידע על ידי פנייה ישירה לעסק. העסקים אחראים לכבד בקשות כאלה. אם לקוח קצה פונה ישירות ל-Aiyelet בנוגע למחיקת מידע (בכתובת privacy@aiyelet.co), נעביר את הבקשה במהירות לעסק הרלוונטי לצורך מימושה.</span>
+      <span data-en>End customers who interact with businesses through our service can request data deletion by contacting the business directly. Businesses are responsible for honoring such requests. If an end customer contacts Aiyelet directly regarding data deletion (at privacy@aiyelet.co), we will promptly forward the request to the relevant business to fulfill.</span>
+    </p>
+
+    <h2><span data-he>9. הסכמת לקוחות (Opt-In)</span><span data-en>9. Customer Consent (Opt-In)</span></h2>
+    <p>
+      <span data-he>עסקים המשתמשים בשירות אחראים לקבל הסכמה מתאימה מלקוחותיהם לפני שליחת הודעות באמצעות WhatsApp, בהתאם ל<a href="https://business.whatsapp.com/policy" target="_blank" rel="noopener">מדיניות העסקית של WhatsApp</a> ולחוקי הגנת מידע רלוונטיים. Aiyelet אינה אוספת או מאמתת הסכמות opt-in בשם העסקים.</span>
+      <span data-en>Businesses using the Service are responsible for obtaining appropriate consent from their customers before messaging them via WhatsApp, in accordance with the <a href="https://business.whatsapp.com/policy" target="_blank" rel="noopener">WhatsApp Business Policy</a> and applicable data protection laws. Aiyelet does not collect or verify opt-in consent on behalf of businesses.</span>
+    </p>
+
+    <h2><span data-he>10. שינויים במדיניות זו</span><span data-en>10. Changes to This Policy</span></h2>
+    <p>
+      <span data-he>אנו עשויים לעדכן מדיניות פרטיות זו מעת לעת. שינויים יבואו לידי ביטוי בעדכון התאריך "עדכון אחרון" למעלה.</span>
+      <span data-en>We may update this Privacy Policy from time to time. Changes will be reflected by updating the "Last updated" date above.</span>
+    </p>
+
+    <h2><span data-he>11. יצירת קשר</span><span data-en>11. Contact</span></h2>
+    <p>
+      <span data-he>לשאלות בנושא מדיניות פרטיות זו, צרו קשר: <a href="mailto:privacy@aiyelet.co">privacy@aiyelet.co</a></span>
+      <span data-en>For questions about this Privacy Policy, contact us at: <a href="mailto:privacy@aiyelet.co">privacy@aiyelet.co</a></span>
+    </p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="/images/aiyelet-stacked-dark-transparent.png" alt="Aiyelet" />
+      </div>
+      <div>
+        <div class="footer-col-title">
+          <span data-he>ניווט</span><span data-en>Navigate</span>
+        </div>
+        <div class="footer-links">
+          <a href="/admin"><span data-he>לוח בקרה</span><span data-en>Admin Dashboard</span></a>
+          <a href="/#features"><span data-he>תכונות</span><span data-en>Features</span></a>
+          <a href="/#faq"><span data-he>שאלות נפוצות</span><span data-en>FAQ</span></a>
+          <a href="/privacy.html"><span data-he>מדיניות פרטיות</span><span data-en>Privacy Policy</span></a>
+          <a href="/terms.html"><span data-he>תנאי שימוש</span><span data-en>Terms of Service</span></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">
+          <span data-he>צרו קשר</span><span data-en>Contact</span>
+        </div>
+        <div class="footer-contact">
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            <a href="mailto:info@aiyelet.co">info@aiyelet.co</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025-2026 Aiyelet by LUCON LABS</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Language Toggle */
+  function setLang(lang) {
+    const isHe = lang === 'he';
+    document.documentElement.classList.toggle('he', isHe);
+    document.documentElement.dir = isHe ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+    document.title = isHe ? 'Aiyelet - מדיניות פרטיות' : 'Aiyelet - Privacy Policy';
+    document.querySelectorAll('.lang-toggle').forEach(t => {
+      t.querySelectorAll('button').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim().endsWith(isHe ? 'HE' : 'EN'));
+      });
+    });
+    localStorage.setItem('aiyelet-lang', lang);
+  }
+  const saved = localStorage.getItem('aiyelet-lang');
+  if (saved) setLang(saved);
+
+  /* Mobile Menu */
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+  }
+</script>
+
+</body>
+</html>

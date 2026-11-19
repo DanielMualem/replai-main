@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIyelet Admin</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/aiyelet-logo-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/aiyelet-logo-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/aiyelet-logo-180.png">
+  <style>
+    :root {
+      --primary: #25D366;
+      --primary-dark: #1eba59;
+      --primary-light: rgba(37, 211, 102, 0.12);
+      --bg: #0a1220;
+      --sidebar-bg: #060d1a;
+      --sidebar-text: #94a3b8;
+      --sidebar-active: rgba(255, 255, 255, 0.06);
+      --header-bg: rgba(5, 10, 20, 0.92);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --text: #e2e8f0;
+      --text-light: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+      --success: #25D366;
+      --success-light: rgba(37, 211, 102, 0.15);
+      --warning: #f59e0b;
+      --warning-light: rgba(245, 158, 11, 0.15);
+      --danger: #ef4444;
+      --danger-light: rgba(239, 68, 68, 0.15);
+      --radius: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.3), 0 4px 6px -2px rgba(0,0,0,.2);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Header */
+    #header {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 56px;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(37, 211, 102, 0.15);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+      z-index: 100;
+    }
+    .header-title { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+    .header-title span { color: var(--primary); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    #auth-status { font-size: 13px; color: var(--text-light); }
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed; top: 56px; left: 0; bottom: 0;
+      width: 240px;
+      background: var(--sidebar-bg);
+      overflow-y: auto;
+      padding: 12px 0;
+      z-index: 90;
+    }
+    .nav-section-title {
+      font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--sidebar-text); opacity: .6;
+      padding: 12px 16px 4px;
+    }
+    .nav-link {
+      display: block; padding: 7px 16px; margin: 1px 8px;
+      color: var(--sidebar-text); text-decoration: none;
+      font-size: 14px; border-radius: 6px; transition: background .15s;
+    }
+    .nav-link:hover { background: var(--sidebar-active); color: #fff; }
+    .nav-link.active { background: rgba(37, 211, 102, 0.15); color: #25D366; font-weight: 600; }
+    .nav-business-name {
+      padding: 12px 16px 4px; font-size: 13px; font-weight: 600; color: #fff;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      border-top: 1px solid var(--sidebar-active); margin-top: 8px;
+    }
+
+    /* Main */
+    #main {
+      margin-left: 240px; margin-top: 56px;
+      padding: 24px; min-height: calc(100vh - 56px);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 24px; margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    /* Page header */
+    .page-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+    }
+    .page-title { font-size: 24px; font-weight: 700; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border: none; border-radius: 6px;
+      font-size: 14px; font-weight: 500; cursor: pointer;
+      transition: all .15s; text-decoration: none; line-height: 1.4;
+      white-space: nowrap;
+    }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 2px 12px rgba(37, 211, 102, 0.25); }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35); }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-danger:hover:not(:disabled) { background: #b91c1c; }
+    .btn-secondary { background: rgba(255, 255, 255, 0.08); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover:not(:disabled) { background: rgba(255, 255, 255, 0.14); }
+    .btn-sm { padding: 4px 10px; font-size: 13px; }
+    .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      text-align: left; padding: 10px 12px; font-size: 12px;
+      text-transform: uppercase; letter-spacing: .05em;
+      color: var(--text-light); border-bottom: 2px solid var(--border); font-weight: 600;
+    }
+    td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px; }
+    tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+    tr.clickable { cursor: pointer; }
+    tr.clickable:hover { background: rgba(37, 211, 102, 0.08); }
+
+    /* Forms */
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .form-group .hint { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+    input[type="text"], input[type="password"], input[type="url"], textarea, select {
+      width: 100%; padding: 8px 12px; border: 1px solid var(--border);
+      border-radius: 6px; font-size: 14px; font-family: inherit;
+      transition: border-color .15s; background: rgba(255, 255, 255, 0.05); color: var(--text);
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none; border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.15);
+    }
+    input::placeholder, textarea::placeholder { color: var(--text-light); opacity: 0.6; }
+    select option { background: #1a2332; color: var(--text); }
+    textarea { resize: vertical; min-height: 80px; }
+
+    /* Badges */
+    .badge {
+      display: inline-block; padding: 2px 8px;
+      border-radius: 12px; font-size: 12px; font-weight: 600;
+    }
+    .badge-success { background: var(--success-light); color: var(--success); }
+    .badge-warning { background: var(--warning-light); color: var(--warning); }
+    .badge-danger { background: var(--danger-light); color: var(--danger); }
+    .badge-secondary { background: rgba(255, 255, 255, 0.08); color: var(--text-light); }
+
+    /* Chat */
+    .chat-container { display: flex; flex-direction: column; height: calc(100vh - 220px); min-height: 400px; }
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 16px;
+      background: rgba(0, 0, 0, 0.2); border-radius: var(--radius); margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+    .chat-bubble {
+      max-width: 70%; padding: 10px 14px; border-radius: 16px;
+      margin-bottom: 8px; font-size: 14px; line-height: 1.5;
+      word-wrap: break-word; white-space: pre-wrap;
+    }
+    .chat-bubble.user {
+      background: var(--primary); color: #fff;
+      margin-left: auto; border-bottom-right-radius: 4px;
+    }
+    .chat-bubble.assistant {
+      background: rgba(255, 255, 255, 0.08); color: var(--text);
+      border-bottom-left-radius: 4px; box-shadow: var(--shadow);
+    }
+    .chat-input-row { display: flex; gap: 8px; }
+    .chat-input-row input { flex: 1; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.7);
+      display: flex; align-items: center; justify-content: center; z-index: 1000;
+    }
+    .modal {
+      background: #111827; border-radius: var(--radius);
+      box-shadow: var(--shadow-lg); padding: 32px; width: 100%; max-width: 400px;
+      border: 1px solid var(--border);
+    }
+    .modal h2 { margin-bottom: 8px; color: var(--text); }
+    .modal p { color: var(--text-light); margin-bottom: 16px; font-size: 14px; }
+    .modal input { margin-bottom: 16px; }
+
+    /* Toast */
+    #toast-container {
+      position: fixed; bottom: 24px; right: 24px; z-index: 2000;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .toast {
+      padding: 12px 20px; border-radius: var(--radius);
+      font-size: 14px; font-weight: 500; box-shadow: var(--shadow-lg);
+      animation: slideIn .3s ease; max-width: 400px;
+    }
+    .toast-success { background: var(--success); color: #fff; }
+    .toast-error { background: var(--danger); color: #fff; }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Spinner */
+    .spinner {
+      display: inline-block; width: 20px; height: 20px;
+      border: 2px solid var(--border); border-top-color: var(--primary);
+      border-radius: 50%; animation: spin .6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-center { display: flex; justify-content: center; padding: 40px; }
+
+    /* Empty state */
+    .empty-state { text-align: center; padding: 48px 24px; color: var(--text-light); }
+    .empty-state h3 { margin-bottom: 8px; color: var(--text); }
+
+    /* Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .stat-card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; border: 1px solid var(--border); }
+    .stat-label { font-size: 13px; color: var(--text-light); font-weight: 500; }
+    .stat-value { font-size: 32px; font-weight: 700; margin-top: 4px; }
+
+    /* Progress bar */
+    .progress-bar { width: 100%; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin: 8px 0; }
+    .progress-fill { height: 100%; background: var(--primary); border-radius: 4px; transition: width .3s; }
+
+    /* Utility */
+    .truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .text-light { color: var(--text-light); }
+    .mt-2 { margin-top: 8px; }
+    .mb-2 { margin-bottom: 8px; }
+
+    @media (max-width: 768px) {
+      #sidebar { width: 180px; }
+      #main { margin-left: 180px; padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="auth-modal" class="modal-overlay" style="display:none">
+    <div class="modal">
+      <h2>Sign In</h2>
+      <p>Sign in to access the admin dashboard.</p>
+      <div id="google-auth-section" style="display:none">
+        <button class="btn btn-primary" style="width:100%;margin-bottom:12px" onclick="loginWithGoogle()">Sign in with Google</button>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <hr style="flex:1;border:none;border-top:1px solid var(--border)">
+          <span style="font-size:13px;color:var(--text-light)">or</span>
+          <hr style="flex:1;border:none;border-top:1px solid var(--border)">
+        </div>
+      </div>
+      <input type="password" id="auth-key-input" placeholder="Enter API key..." onkeydown="if(event.key==='Enter')submitApiKey()">
+      <button class="btn btn-secondary" style="width:100%" onclick="submitApiKey()">Connect with API Key</button>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <div id="app" style="display:none">
+    <header id="header">
+      <div class="header-title">AI<span>yelet</span> Admin</div>
+      <div class="header-actions">
+        <span id="auth-status"></span>
+        <button class="btn btn-sm btn-secondary" id="logout-btn" onclick="logout()" style="display:none">Log Out</button>
+      </div>
+    </header>
+    <nav id="sidebar"><div id="nav-content"></div></nav>
+    <main id="main"><div id="content"></div></main>
+  </div>
+
+<script>
+/* ===== State ===== */
+let state = {
+  apiKey: localStorage.getItem('replai_api_key'),
+  currentBusiness: null,
+  scrapePoller: null,
+  tgPollInterval: null,
+  authMethod: null, // 'google' | 'apikey' | null
+  userEmail: null,
+};
+
+const $ = (s) => document.querySelector(s);
+
+/* ===== API Helper ===== */
+async function api(path, opts = {}) {
+  const headers = { ...(opts.headers || {}) };
+  if (state.apiKey) headers['Authorization'] = 'Bearer ' + state.apiKey;
+  if (opts.body && typeof opts.body === 'object') {
+    headers['Content-Type'] = 'application/json';
+    opts.body = JSON.stringify(opts.body);
+  }
+  const res = await fetch('/api' + path, { ...opts, headers, credentials: 'include' });
+  if (res.status === 401 || res.status === 403) {
+    state.apiKey = null;
+    state.authMethod = null;
+    state.userEmail = null;
+    localStorage.removeItem('replai_api_key');
+    showAuthModal();
+    throw new Error('Unauthorized');
+  }
+  if (res.status === 204) return null;
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'HTTP ' + res.status);
+  return data;
+}
+
+/* ===== Auth ===== */
+async function checkAuth() {
+  // 1. Try Google session cookie first
+  try {
+    const me = await fetch('/auth/me', { credentials: 'include' });
+    if (me.ok) {
+      const data = await me.json();
+      state.authMethod = 'google';
+      state.userEmail = data.email;
+      onAuthenticated();
+      return;
+    }
+  } catch (_) { /* no session */ }
+
+  // 2. Try saved API key
+  if (state.apiKey) {
+    try {
+      await api('/status');
+      state.authMethod = 'apikey';
+      onAuthenticated();
+      return;
+    } catch (e) {
+      if (e.message !== 'Unauthorized') { showAuthModal(); return; }
+    }
+  }
+
+  // 3. Dev mode: no auth configured — try unauthenticated request
+  try {
+    const res = await fetch('/api/status');
+    if (res.ok) {
+      state.authMethod = 'none';
+      onAuthenticated();
+      return;
+    }
+  } catch (_) { /* not dev mode */ }
+
+  showAuthModal();
+}
+
+async function showAuthModal() {
+  $('#app').style.display = 'none';
+  $('#auth-modal').style.display = 'flex';
+
+  // Check if Google OAuth is available
+  try {
+    const res = await fetch('/auth/config');
+    if (res.ok) {
+      const data = await res.json();
+      $('#google-auth-section').style.display = data.google ? '' : 'none';
+    }
+  } catch (_) { /* hide Google button if check fails */ }
+
+  setTimeout(() => $('#auth-key-input').focus(), 100);
+}
+
+function loginWithGoogle() {
+  window.location.href = '/auth/google';
+}
+
+async function submitApiKey() {
+  const key = $('#auth-key-input').value.trim();
+  if (!key) return;
+  state.apiKey = key;
+  localStorage.setItem('replai_api_key', key);
+  try {
+    await api('/status');
+    state.authMethod = 'apikey';
+    $('#auth-modal').style.display = 'none';
+    onAuthenticated();
+  } catch (_) {
+    state.apiKey = null;
+    localStorage.removeItem('replai_api_key');
+    toast('Invalid API key', 'error');
+  }
+}
+
+function onAuthenticated() {
+  $('#auth-modal').style.display = 'none';
+  $('#app').style.display = '';
+  if (state.authMethod === 'google') {
+    $('#auth-status').textContent = state.userEmail || 'Signed in with Google';
+    $('#logout-btn').style.display = '';
+  } else if (state.authMethod === 'apikey') {
+    $('#auth-status').textContent = 'Authenticated';
+    $('#logout-btn').style.display = '';
+  } else {
+    $('#auth-status').textContent = 'No auth (dev mode)';
+    $('#logout-btn').style.display = 'none';
+  }
+  route();
+}
+
+async function logout() {
+  if (state.authMethod === 'google') {
+    try { await fetch('/auth/logout', { method: 'POST', credentials: 'include' }); } catch (_) {}
+  }
+  state.apiKey = null;
+  state.authMethod = null;
+  state.userEmail = null;
+  localStorage.removeItem('replai_api_key');
+  showAuthModal();
+}
+
+/* ===== Toast ===== */
+function toast(message, type) {
+  const el = document.createElement('div');
+  el.className = 'toast toast-' + (type || 'success');
+  el.textContent = message;
+  $('#toast-container').appendChild(el);
+  setTimeout(() => el.remove(), 4000);
+}
+
+/* ===== Utilities ===== */
+function formatDate(d) {
+  if (!d) return '-';
+  const date = new Date(d.includes('T') ? d : d.replace(' ', 'T') + 'Z');
+  if (isNaN(date)) return d;
+  return date.toLocaleString('en-GB');
+}
+
+function formatUptime(s) {
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = Math.floor(s % 60);
+  if (h > 0) return h + 'h ' + m + 'm';
+  if (m > 0) return m + 'm ' + sec + 's';
+  return sec + 's';
+}
+
+function esc(s) {
+  if (s == null) return '';
+  const d = document.createElement('div');
+  d.textContent = String(s);
+  return d.innerHTML;
+}
+
+/* ===== Router ===== */
+function route() {
+  cleanupPollers();
+  const hash = location.hash || '#/';
+  const parts = hash.slice(2).split('/').filter(Boolean);
+  updateNav(parts);
+
+  if (parts.length === 0) return renderStatus();
+  if (parts[0] !== 'businesses') return renderStatus();
+
+  if (parts.length === 1) return renderBusinessList();
+  if (parts[1] === 'new') return renderBusinessForm();
+  if (parts.length === 2) return renderBusinessForm(parts[1]);
+
+  const id = parts[1];
+  const sub = parts[2];
+  if (sub === 'chat') return renderChat(id);
+  if (sub === 'scraping') return renderScraping(id);
+  if (sub === 'conversations' && parts.length === 3) return renderConversations(id);
+  if (sub === 'conversations' && parts.length >= 4) return renderConversation(id, decodeURIComponent(parts.slice(3).join('/')));
+  if (sub === 'customers' && parts.length === 3) return renderCustomers(id);
+  if (sub === 'customers' && parts.length >= 4) return renderCustomer(id, decodeURIComponent(parts.slice(3).join('/')));
+  if (sub === 'escalations') return renderEscalations(id);
+  if (sub === 'appointments') return renderAppointments(id);
+  if (sub === 'knowledge-gaps') return renderKnowledgeGaps(id);
+  renderBusinessForm(id);
+}
+
+function cleanupPollers() {
+  if (state.scrapePoller) { clearInterval(state.scrapePoller); state.scrapePoller = null; }
+  if (state.tgPollInterval) { clearInterval(state.tgPollInterval); state.tgPollInterval = null; }
+}
+
+window.addEventListener('hashchange', route);
+
+/* ===== Navigation ===== */
+function updateNav(parts) {
+  const bizId = parts[0] === 'businesses' && parts[1] && parts[1] !== 'new' ? parts[1] : null;
+  const sub = parts[2] || '';
+
+  let h = '<div class="nav-section-title">Main</div>' +
+    '<a class="nav-link' + (!parts.length ? ' active' : '') + '" href="#/">Status</a>' +
+    '<a class="nav-link' + (parts[0] === 'businesses' && parts.length <= 1 ? ' active' : '') + '" href="#/businesses">Businesses</a>';
+
+  if (bizId) {
+    const name = state.currentBusiness && state.currentBusiness.id === bizId ? state.currentBusiness.name : '...';
+    h += '<div class="nav-business-name">' + esc(name) + '</div>';
+    const links = [
+      ['', 'Overview'], ['chat', 'Chat'], ['scraping', 'Scraping'],
+      ['conversations', 'Conversations'], ['customers', 'Customers'],
+      ['escalations', 'Escalations'], ['knowledge-gaps', 'Knowledge Gaps']
+    ];
+    try {
+      const sc = state.currentBusiness && state.currentBusiness.scheduling_config;
+      const parsed = sc && (typeof sc === 'string' ? JSON.parse(sc) : sc);
+      if (parsed && parsed.provider === 'internal') {
+        links.push(['appointments', 'Appointments']);
+      }
+    } catch (_) { /* no scheduling config */ }
+    for (const [key, label] of links) {
+      const active = key === sub || (!key && !sub && parts.length === 2);
+      h += '<a class="nav-link' + (active ? ' active' : '') + '" href="#/businesses/' + bizId + (key ? '/' + key : '') + '">' + label + '</a>';
+    }
+  }
+  $('#nav-content').innerHTML = h;
+}
+
+async function ensureBusiness(id) {
+  if (state.currentBusiness && state.currentBusiness.id === id) return state.currentBusiness;
+  const b = await api('/businesses/' + id);
+  state.currentBusiness = b;
+  const parts = (location.hash || '#/').slice(2).split('/').filter(Boolean);
+  updateNav(parts);
+  return b;
+}
+
+/* ===== Page: Status ===== */
+async function renderStatus() {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    const data = await api('/status');
+    c.innerHTML =
+      '<div class="page-header"><h1 class="page-title">Server Status</h1></div>' +
+      '<div class="stats-grid">' +
+        '<div class="stat-card"><div class="stat-label">Uptime</div><div class="stat-value">' + formatUptime(data.uptime) + '</div></div>' +
+        '<div class="stat-card"><div class="stat-label">Active Businesses</div><div class="stat-value">' + data.businesses + '</div></div>' +
+      '</div>';
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load status: ' + esc(e.message) + '</div>';
+  }
+}
+
+/* ===== Page: Business List ===== */
+async function renderBusinessList() {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    const list = await api('/businesses');
+    let h = '<div class="page-header"><h1 class="page-title">Businesses</h1>' +
+      '<a href="#/businesses/new" class="btn btn-primary">+ New Business</a></div>';
+    if (!list.length) {
+      h += '<div class="card empty-state"><h3>No businesses yet</h3><p>Create your first business to get started.</p></div>';
+    } else {
+      h += '<div class="card" style="padding:0;overflow:auto"><table><thead><tr>' +
+        '<th>Name</th><th>Plan</th><th>Phone Number ID</th><th>Website</th><th>Model</th><th>Created</th>' +
+        '</tr></thead><tbody>';
+      for (const b of list) {
+        h += '<tr class="clickable" onclick="location.hash=\'#/businesses/' + b.id + '\'">' +
+          '<td><strong>' + esc(b.name) + '</strong></td>' +
+          '<td>' + planBadge(b.subscription_plan, b.trial_ends_at) + '</td>' +
+          '<td>' + (esc(b.phone_number_id) || '<span class="text-light">-</span>') + '</td>' +
+          '<td class="truncate">' + (esc(b.website_url) || '-') + '</td>' +
+          '<td>' + esc(b.gemini_model) + '</td>' +
+          '<td>' + formatDate(b.created_at) + '</td></tr>';
+      }
+      h += '</tbody></table></div>';
+    }
+    c.innerHTML = h;
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+/* ===== Page: Business Form ===== */
+async function renderBusinessForm(id) {
+  const c = $('#content');
+  let business = null;
+  if (id) {
+    c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+    try {
+      business = await ensureBusiness(id);
+    } catch (_) {
+      c.innerHTML = '<div class="card"><h3>Business not found</h3><p>This business may have been deactivated.</p>' +
+        '<div class="btn-group mt-2"><button class="btn btn-primary" onclick="reactivateBusiness(\'' + id + '\')">Reactivate</button>' +
+        '<a href="#/businesses" class="btn btn-secondary">Back to List</a></div></div>';
+      return;
+    }
+  }
+
+  const isEdit = !!business;
+  const title = isEdit ? 'Edit: ' + business.name : 'New Business';
+  let scStr = '';
+  if (business && business.scheduling_config) {
+    try {
+      const scParsed = JSON.parse(business.scheduling_config);
+      // Replace redacted api_key with placeholder so it's not saved back
+      if (scParsed.api_key && /^[•*]+/.test(scParsed.api_key)) {
+        scParsed.api_key = '(leave unchanged or enter new key)';
+      }
+      scStr = JSON.stringify(scParsed, null, 2);
+    }
+    catch (_) { scStr = business.scheduling_config; }
+  }
+
+  c.innerHTML =
+    '<div class="page-header"><h1 class="page-title">' + esc(title) + '</h1>' +
+    (isEdit ? '<button class="btn btn-danger" onclick="deleteBusiness(\'' + id + '\')">Delete Business</button>' : '') +
+    '</div><div class="card"><form id="biz-form">' +
+    formGroup('Name *', '<input type="text" name="name" required value="' + esc(business?.name || '') + '">') +
+    formGroup('Phone Number ID', '<input type="text" name="phone_number_id" value="' + esc(business?.phone_number_id || '') + '">', 'From Meta WhatsApp Cloud API') +
+    formGroup('WhatsApp Access Token', '<input type="password" name="whatsapp_access_token" placeholder="' + (isEdit ? 'Leave blank to keep current' : '') + '">', isEdit ? 'Leave blank to keep current value' : '') +
+    formGroup('System Prompt', '<textarea name="system_prompt" rows="5">' + esc(business?.system_prompt || '') + '</textarea>') +
+    formGroup('Website URL', '<input type="url" name="website_url" value="' + esc(business?.website_url || '') + '">', 'Will be scraped for AI context') +
+    formGroup('Gemini Model', '<input type="text" name="gemini_model" value="' + esc(business?.gemini_model || 'gemini-3-flash-preview') + '">') +
+    formGroup('Boss Language', '<select name="boss_language"><option value="he"' + (business?.boss_language === 'he' || !business?.boss_language ? ' selected' : '') + '>Hebrew</option><option value="ar"' + (business?.boss_language === 'ar' ? ' selected' : '') + '>Arabic</option><option value="en"' + (business?.boss_language === 'en' ? ' selected' : '') + '>English</option></select>', 'Language for boss booking notifications') +
+    formGroup('Subscription Plan', '<select name="subscription_plan"><option value="trial"' + (business?.subscription_plan === 'trial' || !business?.subscription_plan ? ' selected' : '') + '>Trial</option><option value="starter"' + (business?.subscription_plan === 'starter' ? ' selected' : '') + '>Starter</option><option value="business"' + (business?.subscription_plan === 'business' ? ' selected' : '') + '>Business</option><option value="expired"' + (business?.subscription_plan === 'expired' ? ' selected' : '') + '>Expired</option></select>', business?.trial_ends_at ? 'Trial ends: ' + new Date(business.trial_ends_at + 'Z').toLocaleDateString() : '') +
+    formGroup('Scheduling Config (JSON)', '<textarea name="scheduling_config" rows="4">' + esc(scStr) + '</textarea>', 'e.g. {"provider":"cal-com","api_key":"...","event_type_id":123,"timezone":"Asia/Jerusalem"}') +
+    '<div class="btn-group"><button type="submit" class="btn btn-primary">' + (isEdit ? 'Save Changes' : 'Create Business') + '</button>' +
+    '<a href="#/businesses" class="btn btn-secondary">Cancel</a></div></form></div>';
+
+  // WhatsApp Connection section (edit mode only)
+  if (isEdit) {
+    let waSection = '<div class="card" style="margin-top:1rem"><h3 style="margin:0 0 .75rem">WhatsApp Connection</h3>';
+    if (business.phone_number_id) {
+      waSection += '<p style="color:#16a34a;font-weight:600">Connected</p>' +
+        '<p style="font-size:13px;color:#666">Phone Number ID: <code>' + esc(business.phone_number_id) + '</code></p>';
+      if (business.waba_id) {
+        waSection += '<p style="font-size:13px;color:#666">WABA ID: <code>' + esc(business.waba_id) + '</code></p>';
+      }
+    } else {
+      waSection += '<p style="color:#666">Not connected — generate an invite link or fill in credentials manually above.</p>';
+    }
+    waSection += '<div style="margin-top:1rem"><button class="btn btn-primary btn-sm" id="gen-invite-btn" onclick="generateInvite(\'' + id + '\')">Generate Invite Link</button></div>' +
+      '<div id="invite-result" style="margin-top:.75rem;display:none"></div>' +
+      '</div>';
+    c.innerHTML += waSection;
+
+    // Google Calendar section
+    let gcalSection = '<div class="card" style="margin-top:1rem"><h3 style="margin:0 0 .75rem">Google Calendar</h3>';
+    gcalSection += '<div id="gcal-card">Loading...</div></div>';
+    c.innerHTML += gcalSection;
+
+    // Telegram Notifications section
+    let tgSection = '<div class="card" style="margin-top:1rem"><h3 style="margin:0 0 .75rem">Telegram Notifications</h3>';
+    tgSection += '<div id="tg-card">Loading...</div></div>';
+    c.innerHTML += tgSection;
+
+    // Load async statuses after all HTML is appended (innerHTML += destroys previous DOM nodes)
+    loadGoogleCalendarStatus(id);
+    loadTelegramStatus(id);
+  }
+
+  $('#biz-form').onsubmit = (e) => saveBusiness(e, id);
+}
+
+function planBadge(plan, trialEndsAt) {
+  const p = plan || 'trial';
+  const labels = { trial: 'Trial', starter: 'Starter', business: 'Business', expired: 'Expired' };
+  const colors = { trial: 'warning', starter: 'primary', business: 'success', expired: 'danger' };
+  const label = labels[p] || p;
+  const color = colors[p] || 'warning';
+  let badge = '<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;background:var(--' + color + '-light);color:var(--' + color + ')">' + label + '</span>';
+  if (p === 'trial' && trialEndsAt) {
+    const days = Math.ceil((new Date(trialEndsAt + 'Z') - Date.now()) / 86400000);
+    const elapsed = 30 - days;
+    if (days > 0) badge += ' <span style="font-size:11px;color:var(--text-light)">Day ' + Math.max(1, elapsed) + '/30</span>';
+    else badge += ' <span style="font-size:11px;color:var(--danger)">expired</span>';
+  } else if (p === 'trial') {
+    badge += ' <span style="font-size:11px;color:var(--text-light)">no end date</span>';
+  }
+  return badge;
+}
+
+function formGroup(label, input, hint) {
+  return '<div class="form-group"><label>' + label + '</label>' + input +
+    (hint ? '<div class="hint">' + hint + '</div>' : '') + '</div>';
+}
+
+async function saveBusiness(event, id) {
+  event.preventDefault();
+  const f = event.target;
+  const data = {
+    name: f.name.value.trim(),
+    phone_number_id: f.phone_number_id.value.trim() || null,
+    system_prompt: f.system_prompt.value.trim() || null,
+    website_url: f.website_url.value.trim() || null,
+    gemini_model: f.gemini_model.value.trim() || null,
+    boss_language: f.boss_language.value,
+  };
+  if (id && f.subscription_plan) data.subscription_plan = f.subscription_plan.value;
+  const tok = f.whatsapp_access_token.value;
+  if (tok) data.whatsapp_access_token = tok;
+
+  const sc = f.scheduling_config.value.trim();
+  if (sc) {
+    try {
+      const scObj = JSON.parse(sc);
+      // Strip placeholder api_key so backend preserves the existing one
+      if (scObj.api_key && /^\(/.test(scObj.api_key)) delete scObj.api_key;
+      data.scheduling_config = JSON.stringify(scObj);
+    }
+    catch (_) { toast('Invalid JSON in scheduling config', 'error'); return; }
+  } else if (id) {
+    data.scheduling_config = null;
+  }
+
+  try {
+    if (id) {
+      await api('/businesses/' + id, { method: 'PATCH', body: data });
+      toast('Business updated');
+      state.currentBusiness = null;
+      location.hash = '#/businesses/' + id;
+    } else {
+      const created = await api('/businesses', { method: 'POST', body: data });
+      toast('Business created');
+      location.hash = '#/businesses/' + created.id;
+    }
+  } catch (e) { toast(e.message, 'error'); }
+}
+
+async function deleteBusiness(id) {
+  if (!confirm('Deactivate this business? It can be reactivated later.')) return;
+  try {
+    await api('/businesses/' + id, { method: 'DELETE' });
+    toast('Business deactivated');
+    state.currentBusiness = null;
+    location.hash = '#/businesses';
+  } catch (e) { toast(e.message, 'error'); }
+}
+
+async function reactivateBusiness(id) {
+  try {
+    await api('/businesses/' + id + '/activate', { method: 'POST' });
+    toast('Business reactivated');
+    location.hash = '#/businesses/' + id;
+  } catch (e) { toast(e.message, 'error'); }
+}
+
+async function generateInvite(id) {
+  const btn = $('#gen-invite-btn');
+  const result = $('#invite-result');
+  if (!btn || !result) return;
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+  try {
+    const data = await api('/businesses/' + id + '/signup-invite', { method: 'POST' });
+    result.style.display = 'block';
+    result.innerHTML =
+      '<div class="form-group" style="margin-top:12px;margin-bottom:0">' +
+      '<label>Share this link with the business owner:</label>' +
+      '<input type="text" value="' + esc(data.url) + '" readonly onclick="this.select()">' +
+      '<div class="hint">Expires: ' + formatDate(data.expires_at) + ' &bull; Single use</div>' +
+      '</div>';
+    toast('Invite link generated');
+  } catch (e) {
+    result.style.display = 'block';
+    result.innerHTML = '<div style="color:#dc2626;font-size:13px">' + esc(e.message) + '</div>';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Generate Invite Link';
+  }
+}
+
+/* ===== Google Calendar Connection ===== */
+async function loadGoogleCalendarStatus(id) {
+  const card = $('#gcal-card');
+  if (!card) return;
+  try {
+    const data = await api('/businesses/' + id + '/google-calendar-status');
+    renderGoogleCalendarCard(id, card, data);
+  } catch (e) {
+    card.innerHTML = '<p style="color:#dc2626;font-size:13px">' + esc(e.message) + '</p>';
+  }
+}
+
+function renderGoogleCalendarCard(id, card, data) {
+  if (data.connected) {
+    card.innerHTML =
+      '<p style="color:#16a34a;font-weight:600">Connected</p>' +
+      '<p style="font-size:13px;color:#666">Google Calendar is connected and will be used for scheduling.</p>';
+  } else {
+    card.innerHTML =
+      '<p style="font-size:13px;color:#666;margin-bottom:.5rem">Connect Google Calendar for appointment scheduling. The business owner will authorize calendar access via a link.</p>' +
+      '<button class="btn btn-primary btn-sm" id="gen-gcal-invite-btn" onclick="generateGoogleCalendarInvite(\'' + id + '\')">Generate Invite Link</button>' +
+      '<div id="gcal-invite-result" style="margin-top:.75rem;display:none"></div>';
+  }
+}
+
+async function generateGoogleCalendarInvite(id) {
+  const btn = $('#gen-gcal-invite-btn');
+  const result = $('#gcal-invite-result');
+  if (!btn || !result) return;
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+  try {
+    const data = await api('/businesses/' + id + '/google-calendar-invite', { method: 'POST' });
+    result.style.display = 'block';
+    result.innerHTML =
+      '<div class="form-group" style="margin-top:12px;margin-bottom:0">' +
+      '<label>Share this link with the business owner:</label>' +
+      '<input type="text" value="' + esc(data.url) + '" readonly onclick="this.select()">' +
+      '<div class="hint">Expires: ' + formatDate(data.expires_at) + ' &bull; Single use</div>' +
+      '</div>';
+    toast('Google Calendar invite link generated');
+  } catch (e) {
+    result.style.display = 'block';
+    result.innerHTML = '<div style="color:#dc2626;font-size:13px">' + esc(e.message) + '</div>';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Generate Invite Link';
+  }
+}
+
+/* ===== Telegram Connection ===== */
+async function loadTelegramStatus(id) {
+  const card = $('#tg-card');
+  if (!card) return;
+  try {
+    const data = await api('/businesses/' + id + '/telegram-status');
+    renderTelegramCard(id, card, data);
+  } catch (e) {
+    card.innerHTML = '<p style="color:#dc2626;font-size:13px">' + esc(e.message) + '</p>';
+  }
+}
+
+function renderTelegramCard(id, card, data) {
+  if (data.connected) {
+    card.innerHTML =
+      '<p style="color:#16a34a;font-weight:600">Connected</p>' +
+      '<p style="font-size:13px;color:#666">Chat ID: <code>' + esc(data.chat_id) + '</code></p>' +
+      '<button class="btn btn-danger btn-sm" style="margin-top:.5rem" onclick="disconnectTelegram(\'' + id + '\')">Disconnect</button>';
+  } else if (data.pending) {
+    card.innerHTML =
+      '<p style="font-size:13px;color:#666">Click the link below in Telegram, then press <b>Start</b>:</p>' +
+      '<input type="text" id="tg-link" value="' + esc(state.tgLinkUrl || '') + '" readonly onclick="this.select()" style="margin:.5rem 0">' +
+      '<p style="font-size:13px;color:#888"><span class="spinner" style="display:inline-block;width:12px;height:12px;border:2px solid #ccc;border-top-color:#333;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px"></span>Waiting for connection...</p>';
+    if (!state.tgPollInterval) {
+      state.tgPollInterval = setInterval(() => checkTelegramStatus(id), 3000);
+    }
+  } else {
+    if (data.expired) {
+      card.innerHTML = '<p style="color:#f59e0b;font-size:13px;margin-bottom:.5rem">Link expired. Generate a new one.</p>';
+    } else {
+      card.innerHTML = '';
+    }
+    card.innerHTML +=
+      '<p style="font-size:13px;color:#666;margin-bottom:.5rem">Connect Telegram to receive boss notifications (escalations, bookings).</p>' +
+      '<button class="btn btn-primary btn-sm" onclick="connectTelegram(\'' + id + '\')">Connect Telegram</button>';
+  }
+}
+
+async function connectTelegram(id) {
+  const card = $('#tg-card');
+  if (!card) return;
+  card.innerHTML = '<p style="font-size:13px;color:#888">Generating link...</p>';
+  try {
+    const data = await api('/businesses/' + id + '/telegram-link', { method: 'POST' });
+    state.tgLinkUrl = data.url;
+    renderTelegramCard(id, card, { connected: false, pending: true });
+  } catch (e) {
+    card.innerHTML = '<p style="color:#dc2626;font-size:13px">' + esc(e.message) + '</p>' +
+      '<button class="btn btn-primary btn-sm" style="margin-top:.5rem" onclick="connectTelegram(\'' + id + '\')">Retry</button>';
+  }
+}
+
+async function checkTelegramStatus(id) {
+  try {
+    const data = await api('/businesses/' + id + '/telegram-status');
+    if (data.connected) {
+      if (state.tgPollInterval) { clearInterval(state.tgPollInterval); state.tgPollInterval = null; }
+      state.tgLinkUrl = null;
+      const card = $('#tg-card');
+      if (card) renderTelegramCard(id, card, data);
+      toast('Telegram connected');
+      state.currentBusiness = null; // force re-fetch
+    }
+  } catch (_) { /* retry on next poll */ }
+}
+
+async function disconnectTelegram(id) {
+  if (!confirm('Disconnect Telegram? Boss notifications will stop.')) return;
+  try {
+    await api('/businesses/' + id + '/telegram', { method: 'DELETE' });
+    toast('Telegram disconnected');
+    state.currentBusiness = null;
+    const card = $('#tg-card');
+    if (card) renderTelegramCard(id, card, { connected: false, pending: false });
+  } catch (e) {
+    toast(e.message, 'error');
+  }
+}
+
+/* ===== Page: Chat ===== */
+async function renderChat(businessId) {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    await ensureBusiness(businessId);
+    c.innerHTML =
+      '<div class="page-header"><h1 class="page-title">Test Chat</h1>' +
+      '<button class="btn btn-danger btn-sm" id="chat-clear-btn">Clear Conversation</button></div>' +
+      '<div class="card chat-container">' +
+      '<div style="display:flex;gap:8px;margin-bottom:12px;align-items:center">' +
+        '<label style="font-size:13px;font-weight:600;white-space:nowrap">Phone:</label>' +
+        '<input type="text" id="chat-phone" value="test-user" style="max-width:200px">' +
+        '<button class="btn btn-sm btn-secondary" id="chat-load-btn">Load History</button>' +
+      '</div>' +
+      '<div class="chat-messages" id="chat-messages"><div class="empty-state"><p>Send a message to start chatting.</p></div></div>' +
+      '<div class="chat-input-row">' +
+        '<input type="text" id="chat-input" placeholder="Type a message...">' +
+        '<button class="btn btn-primary" id="chat-send-btn">Send</button>' +
+      '</div></div>';
+
+    $('#chat-send-btn').onclick = () => sendChat(businessId);
+    $('#chat-input').onkeydown = (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(businessId); } };
+    $('#chat-clear-btn').onclick = () => clearChat(businessId);
+    $('#chat-load-btn').onclick = () => loadChatHistory(businessId);
+    loadChatHistory(businessId);
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+async function loadChatHistory(businessId) {
+  const phone = ($('#chat-phone') || {}).value || 'test-user';
+  const el = $('#chat-messages');
+  if (!el) return;
+  try {
+    const conv = await api('/businesses/' + businessId + '/conversations/' + encodeURIComponent(phone));
+    if (conv && conv.messages && conv.messages.length) {
+      renderChatBubbles(conv.messages);
+    } else {
+      el.innerHTML = '<div class="empty-state"><p>No messages yet.</p></div>';
+    }
+  } catch (_) {
+    el.innerHTML = '<div class="empty-state"><p>No conversation history. Send a message to start.</p></div>';
+  }
+}
+
+function renderChatBubbles(msgs) {
+  const el = $('#chat-messages');
+  if (!el) return;
+  el.innerHTML = msgs.map(m =>
+    '<div class="chat-bubble ' + (m.role === 'user' ? 'user' : 'assistant') + '">' + esc(m.content) + '</div>'
+  ).join('');
+  el.scrollTop = el.scrollHeight;
+}
+
+async function sendChat(businessId) {
+  const input = $('#chat-input');
+  const btn = $('#chat-send-btn');
+  const msg = input.value.trim();
+  if (!msg || btn.disabled) return;
+
+  const phone = ($('#chat-phone') || {}).value || 'test-user';
+  input.value = '';
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  const el = $('#chat-messages');
+  if (el.querySelector('.empty-state')) el.innerHTML = '';
+  el.insertAdjacentHTML('beforeend', '<div class="chat-bubble user">' + esc(msg) + '</div>');
+  el.insertAdjacentHTML('beforeend', '<div class="chat-bubble assistant" id="chat-loading"><div class="spinner"></div></div>');
+  el.scrollTop = el.scrollHeight;
+
+  try {
+    const data = await api('/businesses/' + businessId + '/chat', {
+      method: 'POST', body: { message: msg, phone },
+    });
+    const ld = $('#chat-loading');
+    if (ld) ld.remove();
+    el.insertAdjacentHTML('beforeend', '<div class="chat-bubble assistant">' + esc(data.reply) + '</div>');
+    el.scrollTop = el.scrollHeight;
+  } catch (e) {
+    const ld = $('#chat-loading');
+    if (ld) ld.remove();
+    toast('Chat error: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send';
+    input.focus();
+  }
+}
+
+async function clearChat(businessId) {
+  const phone = ($('#chat-phone') || {}).value || 'test-user';
+  if (!confirm('Clear conversation with ' + phone + '?')) return;
+  try {
+    await api('/businesses/' + businessId + '/conversations/' + encodeURIComponent(phone), { method: 'DELETE' });
+    toast('Conversation cleared');
+    const el = $('#chat-messages');
+    if (el) el.innerHTML = '<div class="empty-state"><p>Conversation cleared.</p></div>';
+  } catch (e) { toast(e.message, 'error'); }
+}
+
+/* ===== Page: Scraping ===== */
+async function renderScraping(businessId) {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    const biz = await ensureBusiness(businessId);
+    if (!biz.website_url) {
+      c.innerHTML = '<div class="page-header"><h1 class="page-title">Scraping</h1></div>' +
+        '<div class="card empty-state"><h3>No website configured</h3><p>Set a website URL in business settings first.</p>' +
+        '<a href="#/businesses/' + businessId + '" class="btn btn-primary mt-2">Edit Business</a></div>';
+      return;
+    }
+    c.innerHTML =
+      '<div class="page-header"><h1 class="page-title">Scraping</h1>' +
+      '<div class="btn-group">' +
+        '<button class="btn btn-primary" id="scrape-full-btn">Full Scrape</button>' +
+        '<button class="btn btn-secondary" id="scrape-inc-btn">Incremental</button>' +
+        '<button class="btn btn-danger btn-sm" id="scrape-clear-btn">Clear Pages</button>' +
+      '</div></div>' +
+      '<div class="card" id="scrape-status">Loading...</div>' +
+      '<div class="card" id="scrape-pages" style="padding:0;overflow:auto"></div>';
+
+    $('#scrape-full-btn').onclick = () => startScrape(businessId, false);
+    $('#scrape-inc-btn').onclick = () => startScrape(businessId, true);
+    $('#scrape-clear-btn').onclick = () => clearPages(businessId);
+    loadScrapeStatus(businessId);
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+async function loadScrapeStatus(businessId) {
+  try {
+    const data = await api('/businesses/' + businessId + '/scrape');
+    const se = $('#scrape-status');
+    const pe = $('#scrape-pages');
+    if (!se || !pe) return;
+
+    if (data.latest_job) {
+      const j = data.latest_job;
+      const badge = j.status === 'completed' ? 'badge-success' :
+                    j.status === 'in_progress' ? 'badge-warning' :
+                    j.status === 'failed' ? 'badge-danger' : 'badge-secondary';
+      let progress = '';
+      if (j.status === 'in_progress') {
+        const pct = j.total_pages ? Math.round((j.scraped_pages / j.total_pages) * 100) : 0;
+        progress = '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+          '<p class="text-light" style="font-size:13px">' + j.scraped_pages + '/' + j.total_pages + ' pages (' + j.failed_pages + ' failed)</p>';
+        if (!state.scrapePoller) {
+          state.scrapePoller = setInterval(() => loadScrapeStatus(businessId), 2000);
+        }
+      } else {
+        cleanupPollers();
+      }
+      se.innerHTML = '<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">' +
+        '<strong>Latest Job</strong><span class="badge ' + badge + '">' + j.status + '</span></div>' +
+        progress +
+        '<p class="text-light" style="font-size:13px">' + (j.pages_discovered || 0) + ' discovered, ' + data.page_count + ' stored' +
+        (j.error ? '<br>Error: ' + esc(j.error) : '') + '</p>';
+    } else {
+      se.innerHTML = '<p class="text-light">No scrape jobs yet.</p>';
+    }
+
+    if (data.pages && data.pages.length) {
+      pe.innerHTML = '<table><thead><tr><th>URL</th><th>Title</th><th>Type</th><th>Scraped</th></tr></thead><tbody>' +
+        data.pages.map(p =>
+          '<tr><td class="truncate" style="max-width:300px">' + esc(p.url) + '</td>' +
+          '<td>' + (esc(p.title) || '-') + '</td>' +
+          '<td><span class="badge badge-secondary">' + esc(p.page_type) + '</span></td>' +
+          '<td>' + formatDate(p.scraped_at) + '</td></tr>'
+        ).join('') +
+        '</tbody></table>';
+    } else {
+      pe.innerHTML = '<div class="empty-state"><p>No scraped pages.</p></div>';
+    }
+  } catch (e) {
+    const se = $('#scrape-status');
+    if (se) se.innerHTML = '<p>Failed to load: ' + esc(e.message) + '</p>';
+  }
+}
+
+async function startScrape(businessId, incremental) {
+  try {
+    const data = await api('/businesses/' + businessId + '/scrape', {
+      method: 'POST', body: { incremental },
+    });
+    toast('Scrape started (Job: ' + data.job_id.slice(0, 8) + '...)');
+    if (!state.scrapePoller) {
+      state.scrapePoller = setInterval(() => loadScrapeStatus(businessId), 2000);
+    }
+    setTimeout(() => loadScrapeStatus(businessId), 500);
+  } catch (e) { toast(e.message, 'error'); }
+}
+
+async function clearPages(businessId) {
+  if (!confirm('Delete all scraped pages? The AI will lose website context.')) return;
+  try {
+    await api('/businesses/' + businessId + '/pages', { method: 'DELETE' });
+    toast('Scraped pages cleared');
+    loadScrapeStatus(businessId);
+  } catch (e) { toast(e.message, 'error'); }
+}
+
+/* ===== Page: Conversations ===== */
+async function renderConversations(businessId) {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    await ensureBusiness(businessId);
+    const list = await api('/businesses/' + businessId + '/conversations');
+    let h = '<div class="page-header"><h1 class="page-title">Conversations</h1></div>';
+    if (!list.length) {
+      h += '<div class="card empty-state"><h3>No conversations</h3><p>Conversations appear when customers interact with the AI.</p></div>';
+    } else {
+      h += '<div class="card" style="padding:0;overflow:auto"><table><thead><tr><th>Customer Phone</th><th>Messages</th><th>Last Updated</th></tr></thead><tbody>';
+      for (const cv of list) {
+        h += '<tr class="clickable" onclick="location.hash=\'#/businesses/' + businessId + '/conversations/' + encodeURIComponent(cv.customer_phone) + '\'">' +
+          '<td><strong>' + esc(cv.customer_phone) + '</strong></td>' +
+          '<td>' + cv.messages.length + '</td>' +
+          '<td>' + formatDate(cv.updated_at) + '</td></tr>';
+      }
+      h += '</tbody></table></div>';
+    }
+    c.innerHTML = h;
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+/* ===== Page: Conversation Detail ===== */
+async function renderConversation(businessId, phone) {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    await ensureBusiness(businessId);
+    const conv = await api('/businesses/' + businessId + '/conversations/' + encodeURIComponent(phone));
+    c.innerHTML =
+      '<div class="page-header"><h1 class="page-title">Conversation: ' + esc(phone) + '</h1>' +
+      '<div class="btn-group"><a href="#/businesses/' + businessId + '/conversations" class="btn btn-secondary">Back</a>' +
+      '<button class="btn btn-danger btn-sm" id="conv-del-btn">Delete</button></div></div>' +
+      '<div class="card"><div class="chat-messages" style="max-height:600px">' +
+      (conv.messages.length
+        ? conv.messages.map(m => '<div class="chat-bubble ' + (m.role === 'user' ? 'user' : 'assistant') + '">' + esc(m.content) + '</div>').join('')
+        : '<div class="empty-state"><p>No messages.</p></div>') +
+      '</div></div>';
+
+    const msgEl = c.querySelector('.chat-messages');
+    if (msgEl) msgEl.scrollTop = msgEl.scrollHeight;
+
+    $('#conv-del-btn').onclick = async () => {
+      if (!confirm('Delete this conversation?')) return;
+      try {
+        await api('/businesses/' + businessId + '/conversations/' + encodeURIComponent(phone), { method: 'DELETE' });
+        toast('Conversation deleted');
+        location.hash = '#/businesses/' + businessId + '/conversations';
+      } catch (e) { toast(e.message, 'error'); }
+    };
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+/* ===== Page: Customers ===== */
+async function renderCustomers(businessId) {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    await ensureBusiness(businessId);
+    const list = await api('/businesses/' + businessId + '/customers');
+    let h = '<div class="page-header"><h1 class="page-title">Customer Memory</h1>' +
+      '<button class="btn btn-danger btn-sm" id="cust-clear-all">Clear All</button></div>';
+    if (!list.length) {
+      h += '<div class="card empty-state"><h3>No customer memory</h3><p>Facts are extracted automatically from conversations.</p></div>';
+    } else {
+      h += '<div class="card" style="padding:0;overflow:auto"><table><thead><tr><th>Phone</th><th>Name</th><th>Language</th><th>Notes</th><th>Updated</th></tr></thead><tbody>';
+      for (const cm of list) {
+        const facts = cm.facts || {};
+        h += '<tr class="clickable" onclick="location.hash=\'#/businesses/' + businessId + '/customers/' + encodeURIComponent(cm.customer_phone) + '\'">' +
+          '<td><strong>' + esc(cm.customer_phone) + '</strong></td>' +
+          '<td>' + (esc(facts.name) || '-') + '</td>' +
+          '<td>' + (esc(facts.language) || '-') + '</td>' +
+          '<td>' + (Array.isArray(facts.notes) ? facts.notes.length + ' notes' : '-') + '</td>' +
+          '<td>' + formatDate(cm.updated_at) + '</td></tr>';
+      }
+      h += '</tbody></table></div>';
+    }
+    c.innerHTML = h;
+    const clearBtn = $('#cust-clear-all');
+    if (clearBtn) clearBtn.onclick = async () => {
+      if (!confirm('Delete ALL customer memory? This cannot be undone.')) return;
+      try {
+        await api('/businesses/' + businessId + '/customers', { method: 'DELETE' });
+        toast('All customer memory cleared');
+        renderCustomers(businessId);
+      } catch (e) { toast(e.message, 'error'); }
+    };
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+/* ===== Page: Customer Detail ===== */
+async function renderCustomer(businessId, phone) {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    await ensureBusiness(businessId);
+    const cm = await api('/businesses/' + businessId + '/customers/' + encodeURIComponent(phone));
+    const facts = cm.facts || {};
+    c.innerHTML =
+      '<div class="page-header"><h1 class="page-title">Customer: ' + esc(phone) + '</h1>' +
+      '<div class="btn-group"><a href="#/businesses/' + businessId + '/customers" class="btn btn-secondary">Back</a>' +
+      '<button class="btn btn-danger btn-sm" id="cust-del-btn">Delete</button></div></div>' +
+      '<div class="card"><form id="cust-form">' +
+      formGroup('Name', '<input type="text" name="name" value="' + esc(facts.name || '') + '">') +
+      formGroup('Language', '<input type="text" name="language" value="' + esc(facts.language || '') + '">') +
+      formGroup('Notes', '<textarea name="notes" rows="4">' + esc(Array.isArray(facts.notes) ? facts.notes.join('\n') : '') + '</textarea>', 'One note per line') +
+      '<button type="submit" class="btn btn-primary">Save</button></form></div>' +
+      '<div class="card"><h3 class="mb-2">Raw Facts</h3>' +
+      '<pre style="font-size:13px;background:rgba(0,0,0,0.2);padding:12px;border-radius:6px;overflow:auto;white-space:pre-wrap;border:1px solid rgba(255,255,255,0.08);color:#e2e8f0">' + esc(JSON.stringify(facts, null, 2)) + '</pre></div>';
+
+    $('#cust-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const f = e.target;
+      const notesRaw = f.notes.value.trim();
+      const notes = notesRaw ? notesRaw.split('\n').map(n => n.trim()).filter(Boolean) : [];
+      const newFacts = {};
+      if (f.name.value.trim()) newFacts.name = f.name.value.trim();
+      if (f.language.value.trim()) newFacts.language = f.language.value.trim();
+      if (notes.length) newFacts.notes = notes;
+      try {
+        await api('/businesses/' + businessId + '/customers/' + encodeURIComponent(phone), {
+          method: 'PATCH', body: { facts: newFacts },
+        });
+        toast('Customer facts saved');
+      } catch (err) { toast(err.message, 'error'); }
+    };
+
+    $('#cust-del-btn').onclick = async () => {
+      if (!confirm('Delete this customer\'s memory?')) return;
+      try {
+        await api('/businesses/' + businessId + '/customers/' + encodeURIComponent(phone), { method: 'DELETE' });
+        toast('Customer memory deleted');
+        location.hash = '#/businesses/' + businessId + '/customers';
+      } catch (e) { toast(e.message, 'error'); }
+    };
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+/* ===== Page: Escalations ===== */
+async function renderEscalations(businessId) {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    await ensureBusiness(businessId);
+    const list = await api('/businesses/' + businessId + '/escalations');
+    let h = '<div class="page-header"><h1 class="page-title">Escalations</h1></div>';
+    if (!list.length) {
+      h += '<div class="card empty-state"><h3>No escalations</h3><p>Escalations appear when the AI cannot handle a request.</p></div>';
+    } else {
+      h += '<div class="card" style="padding:0;overflow:auto"><table><thead><tr>' +
+        '<th>Customer</th><th>Reason</th><th>Status</th><th>Created</th><th>Resolved</th><th>Action</th>' +
+        '</tr></thead><tbody>';
+      for (const e of list) {
+        const badge = e.status === 'active' ? 'badge-warning' : 'badge-success';
+        h += '<tr><td><strong>' + esc(e.customer_phone) + '</strong></td>' +
+          '<td class="truncate">' + (esc(e.reason) || '-') + '</td>' +
+          '<td><span class="badge ' + badge + '">' + e.status + '</span></td>' +
+          '<td>' + formatDate(e.created_at) + '</td>' +
+          '<td>' + formatDate(e.resolved_at) + '</td>' +
+          '<td>' + (e.status === 'active'
+            ? '<button class="btn btn-sm btn-primary" data-esc-id="' + e.id + '">Resume Bot</button>'
+            : '') + '</td></tr>';
+      }
+      h += '</tbody></table></div>';
+    }
+    c.innerHTML = h;
+
+    // Attach resolve handlers
+    c.querySelectorAll('[data-esc-id]').forEach(btn => {
+      btn.onclick = async () => {
+        if (!confirm('Resume bot for this customer?')) return;
+        try {
+          await api('/businesses/' + businessId + '/escalations/' + btn.dataset.escId + '/resolve', { method: 'POST' });
+          toast('Escalation resolved');
+          renderEscalations(businessId);
+        } catch (err) { toast(err.message, 'error'); }
+      };
+    });
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+/* ===== Page: Appointments ===== */
+async function renderAppointments(businessId) {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    await ensureBusiness(businessId);
+    const hash = location.hash || '';
+    const currentFilter = new URL('http://x' + '?' + (hash.split('?')[1] || '')).searchParams.get('status') || '';
+    const listUrl = '/businesses/' + businessId + '/appointments' + (currentFilter ? '?status=' + encodeURIComponent(currentFilter) : '');
+    const list = await api(listUrl);
+
+    let h = '<div class="page-header"><h1 class="page-title">Appointments</h1></div>';
+
+    h += '<div style="display:flex;gap:8px;margin-bottom:16px">';
+    for (const [val, label] of [['', 'All'], ['confirmed', 'Confirmed'], ['cancelled', 'Cancelled']]) {
+      const active = currentFilter === val;
+      h += '<button class="btn btn-sm' + (active ? ' btn-primary' : '') + '" data-appt-filter="' + val + '">' + label + '</button>';
+    }
+    h += '</div>';
+
+    if (!list.length) {
+      h += '<div class="card empty-state"><h3>No appointments' + (currentFilter ? ' (' + currentFilter + ')' : '') + '</h3>' +
+        '<p>Appointments appear when customers book through the AI assistant.</p></div>';
+    } else {
+      h += '<div class="card" style="padding:0;overflow:auto"><table><thead><tr>' +
+        '<th>Customer</th><th>Phone</th><th>Service</th><th>Date &amp; Time</th><th>Duration</th><th>Status</th><th>Action</th>' +
+        '</tr></thead><tbody>';
+      for (const a of list) {
+        const badge = a.status === 'confirmed' ? 'badge-success' : 'badge-secondary';
+        h += '<tr>' +
+          '<td><strong>' + esc(a.customer_name) + '</strong></td>' +
+          '<td>' + esc(a.customer_phone) + '</td>' +
+          '<td>' + esc(a.service_name) + '</td>' +
+          '<td>' + formatDate(a.start_time) + '</td>' +
+          '<td>' + a.service_duration + 'min</td>' +
+          '<td><span class="badge ' + badge + '">' + a.status + '</span></td>' +
+          '<td>' + (a.status === 'confirmed'
+            ? '<button class="btn btn-sm btn-danger" data-appt-cancel="' + a.id + '">Cancel</button>'
+            : '') + '</td></tr>';
+      }
+      h += '</tbody></table></div>';
+    }
+    c.innerHTML = h;
+
+    c.querySelectorAll('[data-appt-filter]').forEach(btn => {
+      btn.onclick = () => {
+        const base = '#/businesses/' + businessId + '/appointments';
+        location.hash = btn.dataset.apptFilter ? base + '?status=' + btn.dataset.apptFilter : base;
+        renderAppointments(businessId);
+      };
+    });
+
+    c.querySelectorAll('[data-appt-cancel]').forEach(btn => {
+      btn.onclick = async () => {
+        if (!confirm('Cancel this appointment?')) return;
+        try {
+          await api('/businesses/' + businessId + '/appointments/' + btn.dataset.apptCancel, { method: 'PATCH' });
+          toast('Appointment cancelled');
+          renderAppointments(businessId);
+        } catch (err) { toast(err.message, 'error'); }
+      };
+    });
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+/* ===== Page: Knowledge Gaps ===== */
+async function renderKnowledgeGaps(businessId) {
+  const c = $('#content');
+  c.innerHTML = '<div class="loading-center"><div class="spinner"></div></div>';
+  try {
+    await ensureBusiness(businessId);
+    // Read filter from hash query string
+    const hash = location.hash || '';
+    const currentFilter = new URL('http://x' + '?' + (hash.split('?')[1] || '')).searchParams.get('status') || '';
+
+    const listUrl = '/businesses/' + businessId + '/knowledge-gaps' + (currentFilter ? '?status=' + encodeURIComponent(currentFilter) : '');
+    const [stats, list] = await Promise.all([
+      api('/businesses/' + businessId + '/knowledge-gaps/stats'),
+      api(listUrl),
+    ]);
+
+    let h = '<div class="page-header"><h1 class="page-title">Knowledge Gaps</h1></div>';
+
+    // Stats cards
+    h += '<div class="stats-grid">' +
+      '<div class="stat-card"><div class="stat-label">Pending</div><div class="stat-value" style="color:var(--warning)">' + (stats.pending || 0) + '</div></div>' +
+      '<div class="stat-card"><div class="stat-label">Answered</div><div class="stat-value" style="color:var(--success)">' + (stats.answered || 0) + '</div></div>' +
+      '<div class="stat-card"><div class="stat-label">Dismissed</div><div class="stat-value">' + (stats.dismissed || 0) + '</div></div>' +
+      '</div>';
+
+    // Filter tabs
+    h += '<div style="display:flex;gap:8px;margin-bottom:16px">';
+    for (const [val, label] of [['', 'All'], ['pending', 'Pending'], ['answered', 'Answered'], ['dismissed', 'Dismissed']]) {
+      const active = currentFilter === val;
+      h += '<button class="btn btn-sm' + (active ? ' btn-primary' : '') + '" data-kg-filter="' + val + '">' + label + '</button>';
+    }
+    h += '</div>';
+
+    if (!list.length) {
+      h += '<div class="card empty-state"><h3>No knowledge gaps' + (currentFilter ? ' (' + currentFilter + ')' : '') + '</h3>' +
+        '<p>Gaps appear when the AI can\'t confidently answer a customer\'s question.</p></div>';
+    } else {
+      h += '<div class="card" style="padding:0;overflow:auto"><table><thead><tr>' +
+        '<th>Customer</th><th>Question</th><th>Type</th><th>Status</th><th>Date</th><th>Actions</th>' +
+        '</tr></thead><tbody>';
+      for (const g of list) {
+        const typeBadge = g.gap_type === 'unanswered' ? 'badge-danger' : g.gap_type === 'deflected' ? 'badge-warning' : 'badge-secondary';
+        const statusBadge = g.status === 'pending' ? 'badge-warning' : g.status === 'answered' ? 'badge-success' : '';
+        h += '<tr data-gap-row="' + g.id + '">' +
+          '<td>' + esc(g.customer_phone) + '</td>' +
+          '<td class="truncate" style="max-width:300px">' + esc(g.question) + '</td>' +
+          '<td><span class="badge ' + typeBadge + '">' + esc(g.gap_type) + '</span></td>' +
+          '<td><span class="badge ' + statusBadge + '">' + esc(g.status) + '</span></td>' +
+          '<td>' + formatDate(g.created_at) + '</td>' +
+          '<td style="white-space:nowrap">';
+        if (g.status === 'pending') {
+          h += '<button class="btn btn-sm btn-primary" data-kg-answer="' + g.id + '">Answer</button> ' +
+            '<button class="btn btn-sm" data-kg-dismiss="' + g.id + '">Dismiss</button>';
+        } else if (g.status === 'answered') {
+          h += '<button class="btn btn-sm" data-kg-edit="' + g.id + '">Edit</button> ' +
+            '<button class="btn btn-sm" data-kg-delete="' + g.id + '">Delete</button>';
+        } else {
+          h += '<button class="btn btn-sm" data-kg-restore="' + g.id + '">Restore</button> ' +
+            '<button class="btn btn-sm" data-kg-delete="' + g.id + '">Delete</button>';
+        }
+        h += '</td></tr>';
+        // Expandable answer form row (hidden by default)
+        h += '<tr data-gap-form="' + g.id + '" style="display:none"><td colspan="6" style="padding:16px;background:rgba(255,255,255,0.02)">' +
+          '<div style="margin-bottom:8px"><strong>Question:</strong> ' + esc(g.question) + '</div>' +
+          (g.ai_response ? '<div style="margin-bottom:8px;color:var(--text-light)"><strong>AI Response:</strong> ' + esc(g.ai_response.slice(0, 500)) + '</div>' : '') +
+          '<textarea data-kg-textarea="' + g.id + '" rows="3" style="width:100%;padding:8px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card-bg);color:var(--text);resize:vertical" placeholder="Provide the correct answer...">' +
+          (g.answer ? esc(g.answer) : '') + '</textarea>' +
+          '<div style="margin-top:8px;display:flex;gap:8px">' +
+          '<button class="btn btn-sm btn-primary" data-kg-save="' + g.id + '">Save</button>' +
+          '<button class="btn btn-sm" data-kg-cancel="' + g.id + '">Cancel</button>' +
+          '</div></td></tr>';
+      }
+      h += '</tbody></table></div>';
+    }
+    c.innerHTML = h;
+
+    // Attach filter handlers
+    c.querySelectorAll('[data-kg-filter]').forEach(btn => {
+      btn.onclick = () => {
+        const base = '#/businesses/' + businessId + '/knowledge-gaps';
+        location.hash = btn.dataset.kgFilter ? base + '?status=' + btn.dataset.kgFilter : base;
+        renderKnowledgeGaps(businessId);
+      };
+    });
+
+    // Attach answer/edit button handlers (show form row)
+    c.querySelectorAll('[data-kg-answer], [data-kg-edit]').forEach(btn => {
+      btn.onclick = () => {
+        const gapId = btn.dataset.kgAnswer || btn.dataset.kgEdit;
+        const formRow = c.querySelector('[data-gap-form="' + gapId + '"]');
+        if (formRow) formRow.style.display = formRow.style.display === 'none' ? '' : 'none';
+      };
+    });
+
+    // Cancel buttons
+    c.querySelectorAll('[data-kg-cancel]').forEach(btn => {
+      btn.onclick = () => {
+        const formRow = c.querySelector('[data-gap-form="' + btn.dataset.kgCancel + '"]');
+        if (formRow) formRow.style.display = 'none';
+      };
+    });
+
+    // Save buttons
+    c.querySelectorAll('[data-kg-save]').forEach(btn => {
+      btn.onclick = async () => {
+        const gapId = btn.dataset.kgSave;
+        const textarea = c.querySelector('[data-kg-textarea="' + gapId + '"]');
+        const answer = textarea ? textarea.value.trim() : '';
+        if (!answer) { toast('Answer is required', 'error'); return; }
+        try {
+          await api('/businesses/' + businessId + '/knowledge-gaps/' + gapId, {
+            method: 'PATCH',
+            body: { status: 'answered', answer },
+          });
+          toast('Answer saved');
+          renderKnowledgeGaps(businessId);
+        } catch (e) { toast(e.message, 'error'); }
+      };
+    });
+
+    // Dismiss buttons
+    c.querySelectorAll('[data-kg-dismiss]').forEach(btn => {
+      btn.onclick = async () => {
+        try {
+          await api('/businesses/' + businessId + '/knowledge-gaps/' + btn.dataset.kgDismiss, {
+            method: 'PATCH',
+            body: { status: 'dismissed' },
+          });
+          toast('Gap dismissed');
+          renderKnowledgeGaps(businessId);
+        } catch (e) { toast(e.message, 'error'); }
+      };
+    });
+
+    // Restore buttons (set back to pending)
+    c.querySelectorAll('[data-kg-restore]').forEach(btn => {
+      btn.onclick = async () => {
+        try {
+          await api('/businesses/' + businessId + '/knowledge-gaps/' + btn.dataset.kgRestore, {
+            method: 'PATCH',
+            body: { status: 'pending' },
+          });
+          toast('Gap restored to pending');
+          renderKnowledgeGaps(businessId);
+        } catch (e) { toast(e.message, 'error'); }
+      };
+    });
+
+    // Delete buttons
+    c.querySelectorAll('[data-kg-delete]').forEach(btn => {
+      btn.onclick = async () => {
+        if (!confirm('Delete this knowledge gap?')) return;
+        try {
+          await api('/businesses/' + businessId + '/knowledge-gaps/' + btn.dataset.kgDelete, { method: 'DELETE' });
+          toast('Gap deleted');
+          renderKnowledgeGaps(businessId);
+        } catch (e) { toast(e.message, 'error'); }
+      };
+    });
+  } catch (e) {
+    c.innerHTML = '<div class="card">Failed to load: ' + esc(e.message) + '</div>';
+  }
+}
+
+/* ===== Init ===== */
+checkAuth();
+</script>
+</body>
+</html>

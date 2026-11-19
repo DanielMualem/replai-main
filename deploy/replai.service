@@ -1,0 +1,30 @@
+[Unit]
+Description=ReplAI WhatsApp AI Chatbot
+After=network.target
+
+[Service]
+Type=simple
+User=replai
+Group=replai
+WorkingDirectory=/opt/replai
+EnvironmentFile=/opt/replai/.env
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node src/index.js
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=replai
+
+# Security hardening
+ProtectSystem=strict
+ReadWritePaths=/opt/replai/data
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

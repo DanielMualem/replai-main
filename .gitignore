@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+vendor/
+venv/
+__pycache__/
+
+# Build output
+dist/
+build/
+*.o
+*.pyc
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# App data
+data/
+
+# Claude
+.claude/
+
+# Security
+TOKENS.md
+
+# Logs
+*.log
+npm-debug.log*
+
+# Internal logo tooling
+public/logo-preview.html
+public/logo-export.html
+scripts/generate-stacked-logos.mjs
+
+# Local screenshots / browser-automation artifacts
+.playwright-mcp/
+aiyelet-*.png

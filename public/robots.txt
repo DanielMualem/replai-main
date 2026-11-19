@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /webhook
+Disallow: /auth
+Disallow: /signup/
+Disallow: /resume/
+Disallow: /facebook-data-deletion
+Disallow: /google-calendar/
+
+Sitemap: https://aiyelet.co/sitemap.xml

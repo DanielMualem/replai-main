@@ -1,0 +1,21 @@
+[Unit]
+Description=ReplAI Deploy Webhook
+After=network.target
+
+[Service]
+Type=simple
+User=replai
+Group=replai
+WorkingDirectory=/opt/replai
+EnvironmentFile=/opt/replai/.env
+ExecStart=/usr/bin/node deploy/deploy-webhook.js
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=replai-deploy
+
+[Install]
+WantedBy=multi-user.target

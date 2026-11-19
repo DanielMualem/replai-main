@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050a14">
+<title>Aiyelet - Terms of Service</title>
+<link rel="canonical" href="https://aiyelet.co/terms.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/aiyelet-logo-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/aiyelet-logo-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/aiyelet-logo-180.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Inter", "Heebo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: #e2e8f0;
+    background: #050a14;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  ul { list-style: none; }
+
+  /* Language Toggle */
+  [data-he] { display: none; }
+  html.he [data-en] { display: none; }
+  html.he [data-he] { display: revert; }
+
+  :root {
+    --green: #16a34a;
+    --green-dark: #15803d;
+    --green-deeper: #0f5132;
+    --green-glow: rgba(22, 163, 74, 0.25);
+    --green-subtle: rgba(22, 163, 74, 0.07);
+    --bg-deep: #050a14;
+    --bg-dark: #0a1220;
+    --bg-darker: #080f1c;
+    --bg-light: #f5f8f5;
+    --bg-white: #ffffff;
+    --text-white: #f1f5f9;
+    --text-light: #94a3b8;
+    --text-muted: #64748b;
+    --text-dark: #0f172a;
+    --text-dark-secondary: #475569;
+    --border-green: rgba(22, 163, 74, 0.15);
+    --border-light: rgba(0, 0, 0, 0.06);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --radius-full: 50px;
+    --container: 1140px;
+    --header-h: 72px;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--green);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
+  }
+  .btn-sm { padding: 10px 24px; font-size: 0.9rem; }
+
+  /* Header */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    background: rgba(5, 10, 20, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--border-green);
+  }
+  .header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+  .logo img { height: 160px; width: auto; }
+  .logo .logo-mobile { display: none; }
+  .logo span { color: var(--green); }
+  .nav { display: flex; align-items: center; gap: 32px; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--text-light);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+  .lang-toggle {
+    display: flex;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 2px;
+    gap: 1px;
+  }
+  .lang-toggle button {
+    padding: 3px 8px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.25s ease;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.3px;
+  }
+  .lang-toggle button:hover:not(.active) {
+    color: var(--text-white);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .lang-toggle button.active {
+    background: var(--green);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+  }
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+  }
+  .mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    background: rgba(5, 10, 20, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 24px;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-green);
+    z-index: 99;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .mobile-menu a.btn {
+    color: #fff;
+    border-bottom: none;
+  }
+
+  /* Content */
+  .page-content {
+    padding: calc(var(--header-h) + 48px) 0 80px;
+    background: var(--bg-dark);
+    min-height: calc(100vh - var(--header-h) - 100px);
+  }
+  .page-content .container {
+    max-width: 780px;
+  }
+  .page-content h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .page-content .updated {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 36px;
+  }
+  .page-content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 36px 0 14px;
+  }
+  .page-content p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .page-content ul {
+    list-style: disc;
+    padding-inline-start: 1.5rem;
+    margin-bottom: 14px;
+  }
+  .page-content li {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .page-content strong {
+    color: #cbd5e1;
+  }
+  .page-content a {
+    color: var(--green);
+    transition: color 0.2s;
+  }
+  .page-content a:hover {
+    color: var(--green-dark);
+  }
+
+  /* Footer */
+  .footer {
+    padding: 0;
+    background: var(--bg-deep);
+    border-top: 1px solid var(--border-green);
+  }
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 48px;
+    padding: 20px 0 24px;
+  }
+  .footer-brand img {
+    height: 130px;
+    margin-bottom: 16px;
+  }
+.footer-col-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--green); }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .footer-contact-item svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+    opacity: 0.7;
+  }
+  .footer-contact-item a {
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .footer-contact-item a:hover { color: var(--green); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .footer-reg {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .logo .logo-desktop { display: none; }
+    .logo .logo-mobile { display: block; height: 50px; }
+    .nav-links, .nav .btn, .nav .lang-toggle { display: none; }
+    .mobile-toggle { display: flex; }
+    .footer-main { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+.footer-brand img { margin-inline: auto; }
+    .footer-contact-item { justify-content: center; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .page-content h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <a href="/" class="logo"><img class="logo-desktop" src="/images/aiyelet-horizontal-dark-transparent.png" alt="Aiyelet logo"><img class="logo-mobile" src="/images/aiyelet-logo-2048-transparent.png" alt="Aiyelet logo"></a>
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="/#features"><span data-he>תכונות</span><span data-en>Features</span></a>
+        <a href="/#how-it-works"><span data-he>איך זה עובד</span><span data-en>How it Works</span></a>
+        <a href="/#demo"><span data-he>הדגמה</span><span data-en>Demo</span></a>
+        <a href="/#pricing"><span data-he>מחירון</span><span data-en>Pricing</span></a>
+        <a href="/#faq"><span data-he>שאלות נפוצות</span><span data-en>FAQ</span></a>
+      </div>
+      <div class="lang-toggle" dir="ltr">
+        <button id="btn-he" onclick="setLang('he')">🇮🇱 HE</button>
+        <button id="btn-en" class="active" onclick="setLang('en')">🇺🇸 EN</button>
+      </div>
+      <a href="https://wa.me/972500000000" class="btn btn-primary btn-sm">
+        <span data-he>התחילו עכשיו</span><span data-en>Get Started</span>
+      </a>
+    </nav>
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/#features" onclick="closeMobile()"><span data-he>תכונות</span><span data-en>Features</span></a>
+  <a href="/#how-it-works" onclick="closeMobile()"><span data-he>איך זה עובד</span><span data-en>How it Works</span></a>
+  <a href="/#demo" onclick="closeMobile()"><span data-he>הדגמה</span><span data-en>Demo</span></a>
+  <a href="/#pricing" onclick="closeMobile()"><span data-he>מחירון</span><span data-en>Pricing</span></a>
+  <a href="/#faq" onclick="closeMobile()"><span data-he>שאלות נפוצות</span><span data-en>FAQ</span></a>
+  <div class="lang-toggle" dir="ltr" style="align-self: flex-start;">
+    <button onclick="setLang('he');closeMobile()">🇮🇱 HE</button>
+    <button class="active" onclick="setLang('en');closeMobile()">🇺🇸 EN</button>
+  </div>
+  <a href="https://wa.me/972500000000" class="btn btn-primary" style="align-self: stretch; text-align: center; justify-content: center;">
+    <span data-he>התחילו עכשיו</span><span data-en>Get Started</span>
+  </a>
+</div>
+
+<!-- Content -->
+<main class="page-content">
+  <div class="container">
+    <h1><span data-he>תנאי שימוש</span><span data-en>Terms of Service</span></h1>
+    <p class="updated"><span data-he>עדכון אחרון: 8 במרץ, 2026</span><span data-en>Last updated: March 8, 2026</span></p>
+
+    <p>
+      <span data-he>תנאי שימוש אלה ("התנאים") מסדירים את השימוש שלך בשירות Aiyelet ("השירות") המסופק על ידי LUCON LABS ("אנחנו", "שלנו"). השימוש בשירות מהווה הסכמה לתנאים אלה.</span>
+      <span data-en>These Terms of Service ("Terms") govern your use of the Aiyelet service ("Service") provided by LUCON LABS ("we", "our", "us"). By using the Service, you agree to these Terms.</span>
+    </p>
+
+    <h2><span data-he>1. תיאור השירות</span><span data-en>1. Service Description</span></h2>
+    <p>
+      <span data-he>Aiyelet מספקת עוזרת וואטסאפ מבוססת בינה מלאכותית לעסקים. השירות כולל מענה אוטומטי ללקוחות, קביעת תורים אופציונלית, העברת שיחות לבעלי עסקים, התראות טלגרם, ולוח בקרה לניהול ותצורה.</span>
+      <span data-en>Aiyelet provides an AI-powered WhatsApp assistant for businesses. The Service includes automated customer messaging, optional appointment scheduling, conversation escalation to business owners, Telegram notifications, and an admin dashboard for configuration and monitoring.</span>
+    </p>
+
+    <h2><span data-he>2. כשירות</span><span data-en>2. Eligibility</span></h2>
+    <p>
+      <span data-he>השירות זמין לעסקים בעלי חשבון WhatsApp Business תקף העומדים במדיניות WhatsApp Business של Meta. עליך להיות בעל סמכות לחייב את העסק בתנאים אלה.</span>
+      <span data-en>The Service is available to businesses that have a valid WhatsApp Business Account and comply with Meta's WhatsApp Business policies. You must have the authority to bind the business to these Terms.</span>
+    </p>
+
+    <h2><span data-he>3. חשבון וגישה</span><span data-en>3. Account and Access</span></h2>
+    <ul>
+      <li><span data-he>את/ה אחראי/ת לשמירה על אבטחת פרטי החשבון ומפתחות ה-API שלך</span><span data-en>You are responsible for maintaining the security of your account credentials and API keys</span></li>
+      <li><span data-he>את/ה אחראי/ת לכל פעילות המתרחשת תחת החשבון שלך</span><span data-en>You are responsible for all activity that occurs under your account</span></li>
+      <li><span data-he>עליך להודיע לנו מיידית על כל שימוש לא מורשה בחשבונך</span><span data-en>You must promptly notify us of any unauthorized use of your account</span></li>
+    </ul>
+
+    <h2><span data-he>4. שימוש מקובל</span><span data-en>4. Acceptable Use</span></h2>
+    <p><span data-he>אתם מסכימים שלא להשתמש בשירות כדי:</span><span data-en>You agree not to use the Service to:</span></p>
+    <ul>
+      <li><span data-he>לשלוח ספאם, הודעות לא מבוקשות, או הודעות שיווקיות המוניות</span><span data-en>Send spam, unsolicited messages, or bulk marketing messages</span></li>
+      <li><span data-he>להפר את <a href="https://www.whatsapp.com/legal/business-policy/" target="_blank" rel="noopener noreferrer">מדיניות WhatsApp Business</a> או <a href="https://www.whatsapp.com/legal/commerce-policy/" target="_blank" rel="noopener noreferrer">מדיניות המסחר</a> של Meta</span><span data-en>Violate Meta's <a href="https://www.whatsapp.com/legal/business-policy/" target="_blank" rel="noopener noreferrer">WhatsApp Business Policy</a> or <a href="https://www.whatsapp.com/legal/commerce-policy/" target="_blank" rel="noopener noreferrer">Commerce Policy</a></span></li>
+      <li><span data-he>לשדר תוכן לא חוקי, מזיק או פוגעני</span><span data-en>Transmit illegal, harmful, or offensive content</span></li>
+      <li><span data-he>להתחזות לכל אדם או ישות</span><span data-en>Impersonate any person or entity</span></li>
+      <li><span data-he>להפריע או לשבש את השירות</span><span data-en>Interfere with or disrupt the Service</span></li>
+      <li><span data-he>לאסוף מידע אישי של משתמשי קצה בניגוד לחוקי פרטיות רלוונטיים</span><span data-en>Collect personal data of end users in violation of applicable privacy laws</span></li>
+    </ul>
+
+    <h2><span data-he>5. תוכן שנוצר על ידי AI</span><span data-en>5. AI-Generated Content</span></h2>
+    <p><span data-he>השירות משתמש ב-AI (Google Gemini) לייצור תשובות להודעות לקוחות. למרות שאנו שואפים לדיוק:</span><span data-en>The Service uses AI (Google Gemini) to generate replies to customer messages. While we strive for accuracy:</span></p>
+    <ul>
+      <li><span data-he>תשובות שנוצרו על ידי AI עלולות מדי פעם להכיל שגיאות או אי-דיוקים</span><span data-en>AI-generated responses may occasionally contain errors or inaccuracies</span></li>
+      <li><span data-he>את/ה אחראי/ת להגדרת הנחיות מערכת מתאימות ולבדיקת התנהגות ה-AI</span><span data-en>You are responsible for configuring appropriate system prompts and reviewing AI behavior</span></li>
+      <li><span data-he>את/ה אחראי/ת לתוכן הנשלח ללקוחותיך דרך השירות</span><span data-en>You are responsible for the content sent to your customers through the Service</span></li>
+      <li><span data-he>תכונת ההסלמה מאפשרת לך להשתלט על שיחות בעת הצורך</span><span data-en>The escalation feature allows you to take over conversations when needed</span></li>
+    </ul>
+
+    <h2><span data-he>6. אינטגרציית וואטסאפ</span><span data-en>6. WhatsApp Integration</span></h2>
+    <p><span data-he>על ידי חיבור חשבון WhatsApp Business שלך דרך תהליך ה-Embedded Signup שלנו:</span><span data-en>By connecting your WhatsApp Business Account through our Embedded Signup process:</span></p>
+    <ul>
+      <li><span data-he>את/ה מאשר/ת לנו לשלוח ולקבל הודעות בשם העסק שלך</span><span data-en>You authorize us to send and receive messages on behalf of your business</span></li>
+      <li><span data-he>את/ה מסכים/ה לעמוד בתנאי הפלטפורמה והמדיניות של Meta</span><span data-en>You agree to comply with Meta's platform terms and policies</span></li>
+      <li><span data-he>את/ה מבין/ה שמסירת הודעות תלויה בזמינות WhatsApp Cloud API של Meta</span><span data-en>You understand that message delivery depends on Meta's WhatsApp Cloud API availability</span></li>
+    </ul>
+
+    <h2><span data-he>7. קביעת תורים</span><span data-en>7. Scheduling</span></h2>
+    <p><span data-he>אם הפעלת קביעת תורים:</span><span data-en>If you enable appointment scheduling:</span></p>
+    <ul>
+      <li><span data-he>את/ה אחראי/ת לשמירה על זמינות מדויקת בספק לוח הזמנים שלך</span><span data-en>You are responsible for maintaining accurate availability in your scheduling provider</span></li>
+      <li><span data-he>את/ה אחראי/ת לכיבוד תורים שנקבעו דרך השירות</span><span data-en>You are responsible for honoring appointments booked through the Service</span></li>
+      <li><span data-he>אנו לא אחראים לקונפליקטים בלוח הזמנים או תורים שהוחמצו</span><span data-en>We are not liable for scheduling conflicts or missed appointments</span></li>
+      <li><span data-he>תמיכה בספקים: Cal.com, Acuity, Calendly, Square, Google Calendar, או מערכת מובנית</span><span data-en>Supported providers: Cal.com, Acuity, Calendly, Square, Google Calendar, or built-in system</span></li>
+    </ul>
+
+    <h2><span data-he>8. מידע ופרטיות</span><span data-en>8. Data and Privacy</span></h2>
+    <p>
+      <span data-he>האיסוף והשימוש שלנו במידע מוסדר על ידי <a href="/privacy.html">מדיניות הפרטיות</a> שלנו. את/ה אחראי/ת ליידע את הלקוחות שלך שעוזרת AI מטפלת בהודעותיהם ולעמוד בחוקי הגנת מידע רלוונטיים.</span>
+      <span data-en>Our collection and use of data is governed by our <a href="/privacy.html">Privacy Policy</a>. You are responsible for informing your customers that an AI assistant is handling their messages and for complying with applicable data protection laws.</span>
+    </p>
+
+    <h2><span data-he>9. זמינות השירות</span><span data-en>9. Service Availability</span></h2>
+    <p>
+      <span data-he>אנו שואפים לשמור על זמינות גבוהה אך לא מבטיחים שירות ללא הפסקות. השירות עלול להיות לא זמין באופן זמני לצורך תחזוקה, עדכונים, או בשל גורמים מחוץ לשליטתנו (כולל תקלות ב-API של Meta או בספק ה-AI).</span>
+      <span data-en>We strive to maintain high availability but do not guarantee uninterrupted service. The Service may be temporarily unavailable for maintenance, updates, or due to factors beyond our control (including Meta API outages or AI provider issues).</span>
+    </p>
+
+    <h2><span data-he>10. הגבלת אחריות</span><span data-en>10. Limitation of Liability</span></h2>
+    <p>
+      <span data-he>במידה המרבית המותרת בחוק, Aiyelet לא תהיה אחראית לכל נזק עקיף, מקרי, מיוחד, תוצאתי, או עונשי, כולל אך לא רק אובדן רווחים, מידע, או הזדמנויות עסקיות הנובעים מהשימוש שלך בשירות.</span>
+      <span data-en>To the maximum extent permitted by law, Aiyelet shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or business opportunities arising from your use of the Service.</span>
+    </p>
+
+    <h2><span data-he>11. סיום</span><span data-en>11. Termination</span></h2>
+    <p>
+      <span data-he>אנו רשאים להשהות או לסיים את הגישה שלך לשירות בכל עת בשל הפרת תנאים אלה או מכל סיבה אחרת עם הודעה סבירה. תוכל/י להפסיק להשתמש בשירות בכל עת. עם סיום, המידע שלך יישמר לתקופה סבירה לאפשר ייצוא נתונים, ולאחר מכן יימחק.</span>
+      <span data-en>We may suspend or terminate your access to the Service at any time for violation of these Terms or for any other reason with reasonable notice. You may stop using the Service at any time. Upon termination, your data will be retained for a reasonable period to allow data export, after which it will be deleted.</span>
+    </p>
+
+    <h2><span data-he>12. שינויים בתנאים</span><span data-en>12. Changes to Terms</span></h2>
+    <p>
+      <span data-he>אנו עשויים לעדכן תנאים אלה מעת לעת. המשך השימוש בשירות לאחר שינויים מהווה הסכמה לתנאים המעודכנים.</span>
+      <span data-en>We may update these Terms from time to time. Continued use of the Service after changes constitutes acceptance of the updated Terms.</span>
+    </p>
+
+    <h2><span data-he>13. דין חל</span><span data-en>13. Governing Law</span></h2>
+    <p>
+      <span data-he>תנאים אלה כפופים לחוקי מדינת ישראל. כל סכסוך יידון בבתי המשפט המוסמכים בתל אביב-יפו, ישראל.</span>
+      <span data-en>These Terms are governed by the laws of the State of Israel. Any disputes shall be resolved in the competent courts of Tel Aviv-Jaffa, Israel.</span>
+    </p>
+
+    <h2><span data-he>14. יצירת קשר</span><span data-en>14. Contact</span></h2>
+    <p>
+      <span data-he>לשאלות בנושא תנאי שימוש אלה, צרו קשר: <a href="mailto:support@aiyelet.co">support@aiyelet.co</a></span>
+      <span data-en>For questions about these Terms, contact us at: <a href="mailto:support@aiyelet.co">support@aiyelet.co</a></span>
+    </p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="/images/aiyelet-stacked-dark-transparent.png" alt="Aiyelet" />
+      </div>
+      <div>
+        <div class="footer-col-title">
+          <span data-he>ניווט</span><span data-en>Navigate</span>
+        </div>
+        <div class="footer-links">
+          <a href="/admin"><span data-he>לוח בקרה</span><span data-en>Admin Dashboard</span></a>
+          <a href="/#features"><span data-he>תכונות</span><span data-en>Features</span></a>
+          <a href="/#faq"><span data-he>שאלות נפוצות</span><span data-en>FAQ</span></a>
+          <a href="/privacy.html"><span data-he>מדיניות פרטיות</span><span data-en>Privacy Policy</span></a>
+          <a href="/terms.html"><span data-he>תנאי שימוש</span><span data-en>Terms of Service</span></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">
+          <span data-he>צרו קשר</span><span data-en>Contact</span>
+        </div>
+        <div class="footer-contact">
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            <a href="mailto:info@aiyelet.co">info@aiyelet.co</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025-2026 Aiyelet by LUCON LABS</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Language Toggle */
+  function setLang(lang) {
+    const isHe = lang === 'he';
+    document.documentElement.classList.toggle('he', isHe);
+    document.documentElement.dir = isHe ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+    document.title = isHe ? 'Aiyelet - תנאי שימוש' : 'Aiyelet - Terms of Service';
+    document.querySelectorAll('.lang-toggle').forEach(t => {
+      t.querySelectorAll('button').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim().endsWith(isHe ? 'HE' : 'EN'));
+      });
+    });
+    localStorage.setItem('aiyelet-lang', lang);
+  }
+  const saved = localStorage.getItem('aiyelet-lang');
+  if (saved) setLang(saved);
+
+  /* Mobile Menu */
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,3598 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="AiYelet - Smart WhatsApp assistant for Israeli businesses. Customer service, appointment scheduling, and human escalation - all automated, 24/7."
+    />
+    <meta name="theme-color" content="#050a14" />
+    <meta name="robots" content="index, follow" />
+    <meta name="facebook-domain-verification" content="mwn6qj32k8vwol6e090kz169fkf2au" />
+    <link rel="canonical" href="https://aiyelet.co/" />
+    <meta property="og:title" content="AiYelet - Smart WhatsApp Assistant for Businesses" />
+    <meta
+      property="og:description"
+      content="Automated customer service, smart appointment scheduling, and seamless human escalation - all through WhatsApp."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="AiYelet - Smart WhatsApp Assistant for Businesses"
+    />
+    <meta
+      name="twitter:description"
+      content="Automated customer service, smart appointment scheduling, and seamless human escalation - all through WhatsApp."
+    />
+    <title>AIyelet - Smart WhatsApp Assistant for Businesses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/aiyelet-logo-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/aiyelet-logo-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/aiyelet-logo-180.png" />
+    <style>
+      /* ===== Reset & Base ===== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        font-family:
+          "Inter",
+          "Heebo",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: #e2e8f0;
+        background: #050a14;
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+      ul {
+        list-style: none;
+      }
+
+      /* ===== Language Toggle ===== */
+      [data-he] {
+        display: none;
+      }
+      html.he [data-en] {
+        display: none;
+      }
+      html.he [data-he] {
+        display: revert;
+      }
+
+      /* ===== Custom Properties ===== */
+      :root {
+        --green: #16a34a;
+        --green-dark: #15803d;
+        --green-deeper: #0f5132;
+        --green-glow: rgba(22, 163, 74, 0.25);
+        --green-subtle: rgba(22, 163, 74, 0.07);
+
+        --bg-deep: #050a14;
+        --bg-dark: #0a1220;
+        --bg-darker: #080f1c;
+        --bg-light: #f5f8f5;
+        --bg-white: #ffffff;
+
+        --text-white: #f1f5f9;
+        --text-light: #94a3b8;
+        --text-muted: #64748b;
+        --text-dark: #0f172a;
+        --text-dark-secondary: #475569;
+
+        --border-green: rgba(37, 211, 102, 0.15);
+        --border-light: rgba(0, 0, 0, 0.06);
+
+        --radius: 12px;
+        --radius-lg: 20px;
+        --radius-full: 50px;
+
+        --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.12);
+        --shadow-glow: 0 0 40px rgba(37, 211, 102, 0.12);
+
+        --container: 1140px;
+        --section-py: 100px;
+        --header-h: 72px;
+      }
+
+      /* ===== Utilities ===== */
+      .container {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .section-dark {
+        background: var(--bg-dark);
+      }
+      .section-deeper {
+        background: var(--bg-darker);
+      }
+      .section-light {
+        background: var(--bg-light);
+        color: var(--text-dark);
+      }
+
+      /* ===== Scroll Reveal ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+      .reveal-delay-5 {
+        transition-delay: 0.5s;
+      }
+
+      /* ===== Buttons ===== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 32px;
+        border-radius: var(--radius-full);
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--green);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--green-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+      }
+      .btn-outline {
+        border: 2px solid var(--green);
+        color: var(--green);
+      }
+      .btn-outline:hover {
+        background: var(--green);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+      }
+      .btn-sm {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+      }
+
+      /* ===== Header ===== */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: var(--header-h);
+        display: flex;
+        align-items: center;
+        transition:
+          background 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .header.scrolled {
+        background: rgba(5, 10, 20, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 1px 0 var(--border-green);
+      }
+      .header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.55rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        color: #fff;
+      }
+      .logo img {
+        height: 160px;
+        width: auto;
+      }
+      .logo .logo-mobile {
+        display: none;
+      }
+      .logo span {
+        color: var(--green);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        align-items: center;
+      }
+      .nav-links a {
+        color: var(--text-light);
+        font-size: 0.92rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: #fff;
+      }
+      .lang-toggle {
+        display: flex;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: var(--radius-full);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 2px;
+        gap: 1px;
+      }
+      .lang-toggle button {
+        padding: 3px 8px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        transition: all 0.25s ease;
+        border-radius: var(--radius-full);
+        letter-spacing: 0.3px;
+      }
+      .lang-toggle button:hover:not(.active) {
+        color: var(--text-white);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .lang-toggle button.active {
+        background: var(--green);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+      }
+      .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        padding: 8px;
+      }
+      .mobile-toggle span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        background: rgba(5, 10, 20, 0.97);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 24px;
+        flex-direction: column;
+        gap: 16px;
+        border-bottom: 1px solid var(--border-green);
+        z-index: 99;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        color: var(--text-light);
+        font-size: 1.05rem;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .mobile-menu a.btn {
+        color: #fff;
+        border-bottom: none;
+      }
+
+      /* ===== Hero ===== */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: calc(var(--header-h) + 40px) 0 80px;
+        background: linear-gradient(
+          160deg,
+          #060d1a 0%,
+          #0a1628 35%,
+          #081420 65%,
+          #040c18 100%
+        );
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -30%;
+        right: -10%;
+        width: 60%;
+        height: 80%;
+        background: radial-gradient(
+          ellipse,
+          rgba(37, 211, 102, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      html.he .hero::before {
+        right: auto;
+        left: -10%;
+      }
+      .hero-orb {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+      .hero-orb-1 {
+        width: 400px;
+        height: 400px;
+        top: 10%;
+        right: 5%;
+        background: radial-gradient(
+          circle,
+          rgba(37, 211, 102, 0.07),
+          transparent 70%
+        );
+        animation: orbFloat 25s ease-in-out infinite;
+      }
+      .hero-orb-2 {
+        width: 250px;
+        height: 250px;
+        bottom: 15%;
+        left: 10%;
+        background: radial-gradient(
+          circle,
+          rgba(37, 211, 102, 0.05),
+          transparent 70%
+        );
+        animation: orbFloat 20s ease-in-out infinite reverse;
+      }
+      @keyframes orbFloat {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -40px) scale(1.05);
+        }
+        66% {
+          transform: translate(-20px, 20px) scale(0.95);
+        }
+      }
+      .hero .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-content {
+        max-width: 560px;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--green-subtle);
+        border: 1px solid var(--border-green);
+        border-radius: var(--radius-full);
+        padding: 8px 18px;
+        font-size: 0.85rem;
+        color: var(--green);
+        font-weight: 500;
+        margin-bottom: 28px;
+        animation: fadeUp 0.6s ease both;
+      }
+      .hero-badge svg {
+        width: 16px;
+        height: 16px;
+      }
+      .hero h1 {
+        font-size: clamp(2.2rem, 4.5vw, 3.3rem);
+        font-weight: 800;
+        line-height: 1.15;
+        color: #fff;
+        margin-bottom: 20px;
+        letter-spacing: -0.5px;
+        animation: fadeUp 0.6s 0.15s ease both;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--green);
+      }
+      .hero-sub {
+        font-size: 1.15rem;
+        color: var(--text-light);
+        line-height: 1.7;
+        margin-bottom: 36px;
+        animation: fadeUp 0.6s 0.3s ease both;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        animation: fadeUp 0.6s 0.45s ease both;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== WhatsApp Chat Mockup ===== */
+      .wa-phone {
+        width: 320px;
+        border-radius: 28px;
+        background: #0b141a;
+        box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        animation:
+          phoneFloat 6s ease-in-out infinite,
+          fadeUp 0.8s 0.4s ease both;
+        margin: 0 auto;
+      }
+      @keyframes phoneFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      .wa-phone-notch {
+        height: 28px;
+        background: #0b141a;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding-bottom: 4px;
+      }
+      .wa-phone-notch::after {
+        content: "";
+        width: 80px;
+        height: 4px;
+        background: #1a2533;
+        border-radius: 4px;
+      }
+      .wa-header-bar {
+        background: #1f2c34;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .wa-header-bar .wa-back {
+        color: #00a884;
+        font-size: 1.1rem;
+      }
+      .wa-avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .wa-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .wa-header-info {
+        flex: 1;
+      }
+      .wa-header-info .wa-name {
+        color: #e9edef;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .wa-header-info .wa-status {
+        color: #8696a0;
+        font-size: 0.72rem;
+      }
+      .wa-chat-body {
+        background: #0b141a;
+        padding: 12px 10px;
+        min-height: 260px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: relative;
+        direction: ltr;
+        background-image:
+          radial-gradient(
+            circle at 20% 30%,
+            rgba(37, 211, 102, 0.02) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(37, 211, 102, 0.015) 0%,
+            transparent 50%
+          );
+      }
+      .wa-msg {
+        max-width: 82%;
+        padding: 6px 10px 4px;
+        border-radius: 8px;
+        font-size: 0.82rem;
+        line-height: 1.45;
+        position: relative;
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+        animation: msgIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        direction: ltr;
+        text-align: left;
+      }
+      html.he .wa-msg {
+        direction: rtl;
+        text-align: right;
+      }
+      .wa-msg-in {
+        background: #1f2c34;
+        color: #e9edef;
+        align-self: flex-start;
+        border-top-left-radius: 2px;
+      }
+      html[dir="rtl"] .wa-msg-in {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 2px;
+      }
+      .wa-msg-out {
+        background: #005c4b;
+        color: #e9edef;
+        align-self: flex-end;
+        border-top-right-radius: 2px;
+      }
+      html[dir="rtl"] .wa-msg-out {
+        border-top-right-radius: 8px;
+        border-top-left-radius: 2px;
+      }
+      .wa-msg-meta {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 4px;
+        margin-top: 2px;
+        direction: ltr;
+      }
+      .wa-msg-time {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .wa-msg-check {
+        font-size: 0.6rem;
+        color: #53bdeb;
+      }
+      .wa-msg:nth-child(1) {
+        animation-delay: 0.8s;
+      }
+      .wa-msg:nth-child(2) {
+        animation-delay: 1.8s;
+      }
+      .wa-msg:nth-child(3) {
+        animation-delay: 3s;
+      }
+      .wa-msg:nth-child(4) {
+        animation-delay: 4s;
+      }
+      @keyframes msgIn {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .wa-input-bar {
+        background: #1f2c34;
+        padding: 8px 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .wa-input-field {
+        flex: 1;
+        background: #2a3942;
+        border-radius: 20px;
+        padding: 8px 14px;
+        color: #8696a0;
+        font-size: 0.78rem;
+      }
+      .wa-input-mic {
+        width: 34px;
+        height: 34px;
+        background: #00a884;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .wa-input-mic svg {
+        width: 16px;
+        height: 16px;
+        fill: #fff;
+      }
+
+      /* ===== Trust Bar ===== */
+      .trust {
+        padding: 56px 0;
+        background: var(--bg-light);
+      }
+      .trust .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+      }
+      .trust-item {
+        text-align: center;
+        padding: 20px 12px;
+      }
+      .trust-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 12px;
+        background: rgba(37, 211, 102, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .trust-icon svg {
+        width: 24px;
+        height: 24px;
+        color: var(--green);
+      }
+      .trust-value {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 4px;
+      }
+      .trust-label {
+        font-size: 0.88rem;
+        color: var(--text-dark-secondary);
+      }
+
+      /* ===== Section Headers ===== */
+      .section-header {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto 56px;
+      }
+      .section-tag {
+        display: inline-block;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--green);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 12px;
+      }
+      .section-light .section-tag {
+        color: var(--green-deeper);
+      }
+      .section-title {
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 16px;
+        letter-spacing: -0.3px;
+      }
+      .section-dark .section-title,
+      .section-deeper .section-title {
+        color: #fff;
+      }
+      .section-light .section-title {
+        color: var(--text-dark);
+      }
+      .section-desc {
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+      .section-dark .section-desc {
+        color: var(--text-light);
+      }
+      .section-light .section-desc {
+        color: var(--text-dark-secondary);
+      }
+
+      /* ===== Features ===== */
+      .features {
+        padding: var(--section-py) 0;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .feature-card {
+        background: var(--bg-white);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-lg);
+        padding: 32px 28px;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--green);
+        transform: scaleX(0);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .feature-card:hover::before {
+        transform: scaleX(1);
+      }
+      .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        border-color: rgba(37, 211, 102, 0.2);
+      }
+      .feature-icon {
+        width: 52px;
+        height: 52px;
+        background: rgba(37, 211, 102, 0.08);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .feature-icon svg {
+        width: 26px;
+        height: 26px;
+        color: var(--green-deeper);
+      }
+      .feature-card h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+      }
+      .feature-card p {
+        font-size: 0.92rem;
+        color: var(--text-dark-secondary);
+        line-height: 1.65;
+      }
+
+      /* ===== Industries ===== */
+      .industries {
+        padding: var(--section-py) 0;
+        background: var(--bg-dark);
+      }
+      .industries-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+      .industry-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: var(--radius-lg);
+        padding: 36px 24px;
+        text-align: center;
+        transition: all 0.35s ease;
+      }
+      .industry-card:hover {
+        border-color: var(--green);
+        box-shadow: 0 0 30px rgba(37, 211, 102, 0.1);
+        transform: translateY(-4px);
+      }
+      .industry-emoji {
+        font-size: 2.8rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .industry-card h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .industry-card p {
+        font-size: 0.88rem;
+        color: var(--text-light);
+        line-height: 1.6;
+      }
+
+      /* ===== How It Works ===== */
+      .how-it-works {
+        padding: var(--section-py) 0;
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        position: relative;
+      }
+      .steps::before {
+        content: "";
+        position: absolute;
+        top: 40px;
+        left: 20%;
+        right: 20%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border-green),
+          var(--green),
+          var(--border-green),
+          transparent
+        );
+      }
+      .step {
+        text-align: center;
+        position: relative;
+      }
+      .step-num {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--green), var(--green-deeper));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 0 auto 24px;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.25);
+      }
+      .step h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .step p {
+        font-size: 0.92rem;
+        color: var(--text-light);
+        line-height: 1.6;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+      .section-light .step h3 {
+        color: var(--text-dark);
+      }
+      .section-light .step p {
+        color: var(--text-dark-secondary);
+      }
+      .section-light .steps::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(37, 211, 102, 0.2),
+          var(--green-deeper),
+          rgba(37, 211, 102, 0.2),
+          transparent
+        );
+      }
+
+      /* ===== Demo Section ===== */
+      .demo {
+        padding: var(--section-py) 0;
+      }
+      .demo-phone {
+        width: 380px;
+        max-width: 100%;
+        margin: 0 auto;
+        border-radius: 32px;
+        background: #0b141a;
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(255, 255, 255, 0.04),
+          var(--shadow-glow);
+        overflow: hidden;
+      }
+      .demo-phone .wa-chat-body {
+        min-height: 280px;
+        padding: 10px 10px;
+        gap: 4px;
+      }
+      .demo-phone .wa-msg {
+        font-size: 0.82rem;
+        max-width: 80%;
+        padding: 5px 9px 3px;
+      }
+      /* Demo delays */
+      .demo-phone .wa-msg:nth-child(1) {
+        animation-delay: 0.4s;
+      }
+      .demo-phone .wa-msg:nth-child(2) {
+        animation-delay: 1.2s;
+      }
+      .demo-phone .wa-msg:nth-child(3) {
+        animation-delay: 2.4s;
+      }
+      .demo-phone .wa-msg:nth-child(4) {
+        animation-delay: 3.4s;
+      }
+      .demo-phone .wa-msg:nth-child(5) {
+        animation-delay: 4.6s;
+      }
+      .demo-phone .wa-msg:nth-child(6) {
+        animation-delay: 5.6s;
+      }
+      .demo-phone .wa-msg:nth-child(7) {
+        animation-delay: 6.6s;
+      }
+      .demo-phone .wa-msg:nth-child(8) {
+        animation-delay: 7.6s;
+      }
+
+      /* Demo EN/HE toggle */
+      .demo-conv-he {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .demo-conv-en {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .demo-conv-he {
+        display: none;
+      }
+      html.he .demo-conv-en {
+        display: none !important;
+      }
+      html.he .demo-conv-he {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      /* ===== Demo Tabs ===== */
+      .demo-tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 32px;
+      }
+      .demo-tabs-inner {
+        display: flex;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: var(--radius-full);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 2px;
+        gap: 1px;
+      }
+      .demo-tabs-inner button {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        transition: all 0.25s ease;
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+      .demo-tabs-inner button:hover:not(.active) {
+        color: var(--text-white);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .demo-tabs-inner button.active {
+        background: var(--green);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+      }
+      .demo-content { display: none; }
+      .demo-content.active { display: block; }
+
+      /* ===== WhatsApp Image Message ===== */
+      .wa-msg-image {
+        width: 220px;
+        max-width: 80%;
+        padding: 4px 4px 3px;
+      }
+      .wa-img-placeholder {
+        width: 100%;
+        height: 140px;
+        border-radius: 6px;
+        background: radial-gradient(ellipse at 50% 60%, #1e1e2a 0%, #0d0d14 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .wa-img-placeholder svg {
+        width: 100%;
+        height: 100%;
+      }
+      .wa-img-placeholder::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 6px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 30%, rgba(0,0,0,0.3) 100%);
+        pointer-events: none;
+      }
+      .wa-img-caption {
+        padding: 4px 6px 0;
+        font-size: 0.8rem;
+        color: #e9edef;
+        line-height: 1.4;
+      }
+
+      /* ===== WhatsApp Voice Message ===== */
+      .wa-msg-voice {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 200px;
+        padding: 6px 10px;
+      }
+      .wa-voice-play {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #00a884;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .wa-voice-play::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 0 6px 10px;
+        border-color: transparent transparent transparent #fff;
+        margin-left: 2px;
+      }
+      .wa-voice-waves {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        height: 28px;
+      }
+      .wa-voice-waves span {
+        width: 3px;
+        border-radius: 2px;
+        background: #8696a0;
+      }
+      .wa-voice-waves span:nth-child(1) { height: 8px; }
+      .wa-voice-waves span:nth-child(2) { height: 14px; }
+      .wa-voice-waves span:nth-child(3) { height: 6px; }
+      .wa-voice-waves span:nth-child(4) { height: 18px; }
+      .wa-voice-waves span:nth-child(5) { height: 10px; }
+      .wa-voice-waves span:nth-child(6) { height: 22px; }
+      .wa-voice-waves span:nth-child(7) { height: 16px; }
+      .wa-voice-waves span:nth-child(8) { height: 8px; }
+      .wa-voice-waves span:nth-child(9) { height: 20px; }
+      .wa-voice-waves span:nth-child(10) { height: 12px; }
+      .wa-voice-waves span:nth-child(11) { height: 6px; }
+      .wa-voice-waves span:nth-child(12) { height: 14px; }
+      .wa-voice-waves span:nth-child(13) { height: 10px; }
+      .wa-voice-waves span:nth-child(14) { height: 16px; }
+      .wa-voice-waves span:nth-child(15) { height: 8px; }
+      .wa-voice-duration {
+        font-size: 0.68rem;
+        color: #8696a0;
+        flex-shrink: 0;
+        min-width: 32px;
+      }
+
+      /* Media demo animation delays */
+      #demo-chat-media .wa-msg:nth-child(1) { animation-delay: 0.4s; }
+      #demo-chat-media .wa-msg:nth-child(2) { animation-delay: 1.2s; }
+      #demo-chat-media .wa-msg:nth-child(3) { animation-delay: 2.6s; }
+      #demo-chat-media .wa-msg:nth-child(4) { animation-delay: 4.2s; }
+      #demo-chat-media .wa-msg:nth-child(5) { animation-delay: 5.8s; }
+      #demo-chat-media .wa-msg:nth-child(6) { animation-delay: 7.2s; }
+      #demo-chat-media .wa-msg:nth-child(7) { animation-delay: 8.4s; }
+
+      /* ===== Testimonials ===== */
+      .testimonials {
+        padding: var(--section-py) 0;
+        background: var(--bg-dark);
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        transition: opacity 0.4s ease;
+      }
+      .testimonials-grid.fading {
+        opacity: 0;
+      }
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: var(--radius-lg);
+        padding: 32px 28px;
+        transition: all 0.3s ease;
+      }
+      .testimonial-card:hover {
+        border-color: var(--border-green);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .testimonial-stars {
+        color: #fbbf24;
+        font-size: 1rem;
+        margin-bottom: 16px;
+        letter-spacing: 2px;
+      }
+      .testimonial-text {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        line-height: 1.7;
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+      .testimonial-author {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #fff;
+      }
+      .testimonial-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .testimonial-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .testimonial-meta {
+        flex: 1;
+      }
+      .testimonial-role {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+
+      /* ===== FAQ ===== */
+      .faq {
+        padding: var(--section-py) 0;
+      }
+      .faq-list {
+        max-width: 720px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .faq-item {
+        background: var(--bg-white);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: border-color 0.3s;
+      }
+      .faq-item.active {
+        border-color: rgba(37, 211, 102, 0.25);
+      }
+      .faq-question {
+        width: 100%;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        text-align: inherit;
+        background: none;
+        cursor: pointer;
+        gap: 16px;
+      }
+      .faq-question:hover {
+        color: var(--green-deeper);
+      }
+      .faq-chevron {
+        width: 20px;
+        height: 20px;
+        color: var(--text-muted);
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+      }
+      .faq-item.active .faq-chevron {
+        transform: rotate(180deg);
+        color: var(--green);
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+      .faq-answer-inner {
+        padding: 0 24px 20px;
+        font-size: 0.94rem;
+        line-height: 1.7;
+        color: var(--text-dark-secondary);
+      }
+
+      /* ===== Comparison Table ===== */
+      .comparison {
+        padding: var(--section-py) 0;
+        background: var(--bg-light);
+      }
+      .comparison-table {
+        max-width: 700px;
+        margin: 0 auto;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+      }
+      .comparison-table table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--bg-white);
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 16px 24px;
+        text-align: center;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .comparison-table th {
+        font-weight: 700;
+        color: var(--text-dark);
+        background: #f8faf8;
+      }
+      .comparison-table th:first-child,
+      .comparison-table td:first-child {
+        text-align: start;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+      .comparison-table td {
+        color: var(--text-dark-secondary);
+      }
+      .comparison-table .col-aiyelet {
+        background: rgba(37, 211, 102, 0.06);
+        color: var(--green-deeper);
+        font-weight: 600;
+      }
+      .comparison-table th.col-aiyelet {
+        background: rgba(37, 211, 102, 0.12);
+        color: var(--green-deeper);
+      }
+      .comparison-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* ===== Pricing Section ===== */
+      .pricing {
+        padding: var(--section-py) 0;
+      }
+      .pricing-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+      }
+      .pricing-toggle-inner {
+        display: flex;
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: var(--radius-full);
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 2px;
+        gap: 1px;
+      }
+      .pricing-toggle-inner button {
+        padding: 6px 16px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-dark-secondary);
+        transition: all 0.25s ease;
+        border-radius: var(--radius-full);
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .pricing-toggle-inner button:hover:not(.active) {
+        color: var(--text-dark);
+        background: rgba(0, 0, 0, 0.04);
+      }
+      .pricing-toggle-inner button.active {
+        background: var(--green);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+      }
+      .pricing-save-wrap {
+        width: 100%;
+        text-align: center;
+        min-height: 28px;
+        margin-bottom: 36px;
+      }
+      .pricing-save-badge {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--green-deeper);
+        background: rgba(37, 211, 102, 0.12);
+        padding: 4px 14px;
+        border-radius: 20px;
+        transition: opacity 0.3s;
+      }
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .pricing-card {
+        background: var(--bg-white);
+        border-radius: var(--radius-lg);
+        padding: 40px 32px;
+        box-shadow: var(--shadow-card);
+        border: 2px solid transparent;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .pricing-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      }
+      .pricing-card.recommended {
+        border-color: var(--green);
+        box-shadow:
+          var(--shadow-card),
+          0 0 0 1px var(--green);
+      }
+      .pricing-card.recommended:hover {
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.15),
+          0 0 0 1px var(--green);
+      }
+      .pricing-badge {
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--green);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 16px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .pricing-card-header {
+        text-align: center;
+        margin-bottom: 24px;
+        padding-top: 20px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border-light);
+      }
+      .pricing-plan-name {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 12px;
+      }
+      .pricing-price {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        line-height: 1;
+      }
+      .pricing-price .currency {
+        font-size: 1.5rem;
+        vertical-align: top;
+      }
+      .pricing-price .period {
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: var(--text-dark-secondary);
+      }
+      .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .pricing-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+        color: var(--text-dark-secondary);
+      }
+      .pricing-features li .icon-check {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(37, 211, 102, 0.12);
+        color: var(--green-deeper);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+      .pricing-features li.disabled {
+        color: #94a3b8;
+      }
+      .pricing-features li.disabled .icon-check {
+        background: #f1f5f9;
+        color: #94a3b8;
+      }
+      .pricing-cta {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 14px 24px;
+        border-radius: var(--radius-full);
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: transparent;
+        color: var(--green-deeper);
+        border: 2px solid var(--green);
+        box-shadow: none;
+      }
+      .pricing-cta:hover {
+        background: var(--green);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+      }
+      .pricing-card.recommended .pricing-cta {
+        background: var(--green);
+        color: #fff;
+        border-color: var(--green);
+      }
+      .pricing-card.recommended .pricing-cta:hover {
+        background: var(--green-dark);
+        border-color: var(--green-dark);
+      }
+      .pricing-trial-note {
+        text-align: center;
+        margin-top: 32px;
+        font-size: 0.9rem;
+        color: var(--text-dark-secondary);
+      }
+      .pricing-trial-note strong {
+        color: var(--green-deeper);
+      }
+      .faq.section-dark .faq-item {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      .faq.section-dark .faq-item.active {
+        border-color: rgba(37, 211, 102, 0.25);
+      }
+      .faq.section-dark .faq-question {
+        color: #fff;
+      }
+      .faq.section-dark .faq-question:hover {
+        color: var(--green);
+      }
+      .faq.section-dark .faq-answer-inner {
+        color: var(--text-light);
+      }
+
+      /* ===== CTA Section ===== */
+      .cta-section {
+        padding: var(--section-py) 0;
+        background: var(--bg-light);
+        color: var(--text-dark);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(37, 211, 102, 0.06),
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .cta-section h2 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 16px;
+        position: relative;
+      }
+      .cta-section p {
+        font-size: 1.1rem;
+        color: var(--text-dark-secondary);
+        margin-bottom: 36px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+      }
+      .cta-section .btn {
+        position: relative;
+      }
+
+      /* ===== Footer ===== */
+      .footer {
+        padding: 0;
+        background: var(--bg-deep);
+        border-top: 1px solid rgba(22, 163, 74, 0.15);
+      }
+      .footer-main {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 48px;
+        padding: 20px 0 24px;
+      }
+      .footer-brand img {
+        height: 130px;
+        margin-bottom: 16px;
+      }
+.footer-col-title {
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-light);
+        margin-bottom: 16px;
+      }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-links a {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--green);
+      }
+      .footer-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+      .footer-contact-item svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+        color: var(--green);
+        opacity: 0.7;
+      }
+      .footer-contact-item a {
+        color: var(--text-muted);
+        transition: color 0.2s;
+      }
+      .footer-contact-item a:hover {
+        color: var(--green);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        padding: 12px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+      .footer-copy {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+      }
+      .footer-reg {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        opacity: 0.7;
+      }
+
+      /* ===== Mobile ===== */
+      @media (max-width: 900px) {
+        :root {
+          --section-py: 72px;
+        }
+        .logo .logo-desktop {
+          display: none;
+        }
+        .logo .logo-mobile {
+          display: block;
+          height: 50px;
+        }
+        .nav {
+          display: none;
+        }
+        .mobile-toggle {
+          display: flex;
+        }
+        .hero .container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-content {
+          max-width: 100%;
+          margin: 0 auto;
+        }
+        .hero-cta {
+          justify-content: center;
+        }
+        .wa-phone {
+          width: 280px;
+        }
+        .trust .container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+        .industries-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .steps {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .steps::before {
+          display: none;
+        }
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+        .pricing-cards {
+          grid-template-columns: 1fr;
+          max-width: 400px;
+        }
+        .footer-main {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+          text-align: center;
+        }
+        .footer-brand { grid-column: 1 / -1; }
+.footer-brand img { margin-inline: auto; }
+        .footer-contact-item { justify-content: center; }
+        .footer-bottom { flex-direction: column; text-align: center; }
+      }
+      @media (max-width: 600px) {
+        .hero h1 {
+          font-size: 1.9rem;
+        }
+        .trust .container {
+          grid-template-columns: 1fr;
+        }
+        .industries-grid {
+          grid-template-columns: 1fr;
+        }
+        .demo-phone {
+          width: 100%;
+          border-radius: 24px;
+        }
+        .wa-img-placeholder { height: 110px; }
+        .wa-msg-voice { min-width: 160px; }
+        .demo-tabs-inner button { padding: 6px 14px; font-size: 0.8rem; }
+        .comparison-table th,
+        .comparison-table td {
+          padding: 12px 14px;
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== Header ===== -->
+    <header class="header" id="header">
+      <div class="container">
+        <a href="/" class="logo"><img class="logo-desktop" src="/images/aiyelet-horizontal-dark-transparent.png" alt="Aiyelet logo" /><img class="logo-mobile" src="/images/aiyelet-logo-2048-transparent.png" alt="Aiyelet logo" /></a>
+        <nav class="nav">
+          <div class="nav-links">
+            <a href="#features"
+              ><span data-he>תכונות</span><span data-en>Features</span></a
+            >
+            <a href="#how-it-works"
+              ><span data-he>איך זה עובד</span
+              ><span data-en>How it Works</span></a
+            >
+            <a href="#demo"
+              ><span data-he>הדגמה</span><span data-en>Demo</span></a
+            >
+            <a href="#pricing"
+              ><span data-he>מחירון</span><span data-en>Pricing</span></a
+            >
+            <a href="#faq"
+              ><span data-he>שאלות נפוצות</span><span data-en>FAQ</span></a
+            >
+          </div>
+          <div class="lang-toggle" dir="ltr">
+            <button id="btn-he" onclick="setLang('he')">
+              🇮🇱 HE
+            </button>
+            <button id="btn-en" class="active" onclick="setLang('en')">🇺🇸 EN</button>
+          </div>
+          <a href="https://wa.me/972500000000" class="btn btn-primary btn-sm">
+            <span data-he>התחילו עכשיו</span><span data-en>Get Started</span>
+          </a>
+        </nav>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#features" onclick="closeMobile()"
+        ><span data-he>תכונות</span><span data-en>Features</span></a
+      >
+      <a href="#how-it-works" onclick="closeMobile()"
+        ><span data-he>איך זה עובד</span><span data-en>How it Works</span></a
+      >
+      <a href="#demo" onclick="closeMobile()"
+        ><span data-he>הדגמה</span><span data-en>Demo</span></a
+      >
+      <a href="#pricing" onclick="closeMobile()"
+        ><span data-he>מחירון</span><span data-en>Pricing</span></a
+      >
+      <a href="#faq" onclick="closeMobile()"
+        ><span data-he>שאלות נפוצות</span><span data-en>FAQ</span></a
+      >
+      <div class="lang-toggle" dir="ltr" style="align-self: flex-start">
+        <button
+          onclick="
+            setLang('he');
+            closeMobile();
+          "
+        >
+          🇮🇱 HE
+        </button>
+        <button
+          class="active"
+          onclick="
+            setLang('en');
+            closeMobile();
+          "
+        >
+          🇺🇸 EN
+        </button>
+      </div>
+      <a
+        href="https://wa.me/972500000000"
+        class="btn btn-primary"
+        style="align-self: stretch; text-align: center; justify-content: center"
+      >
+        <span data-he>התחילו עכשיו</span><span data-en>Get Started</span>
+      </a>
+    </div>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z"
+              />
+            </svg>
+            <span data-he>הכירו את איילת</span>
+            <span data-en>Meet <span style="color:var(--green)">Ai</span>Yelet</span>
+          </div>
+          <h1>
+            <span data-he>העסק שלך עובד <em>24/7</em> עם איילת בוואטסאפ</span>
+            <span data-en
+              >Your Business Works <em>24/7</em> with <span style="color:var(--green)">Ai</span>Yelet on WhatsApp</span
+            >
+          </h1>
+          <p class="hero-sub">
+            <span data-he
+              >שירות לקוחות אוטומטי, קביעת תורים חכמה, והעברה חלקה לנציג אנושי
+              - הכל דרך וואטסאפ.</span
+            >
+            <span data-en
+              >Automated customer service, smart appointment scheduling, and
+              seamless human escalation - all through WhatsApp.</span
+            >
+          </p>
+          <div class="hero-cta">
+            <a href="https://wa.me/972500000000" class="btn btn-primary">
+              <span data-he>התחילו בחינם</span><span data-en>Start Free</span>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+                />
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.344 0-4.524-.8-6.254-2.142l-.437-.356-3.168 1.062 1.062-3.168-.356-.437A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+                />
+              </svg>
+            </a>
+            <a href="#demo" class="btn btn-outline">
+              <span data-he>ראו הדגמה</span><span data-en>See Demo</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-chat">
+          <!-- Mini WhatsApp mockup -->
+          <div class="wa-phone">
+            <div class="wa-phone-notch"></div>
+            <div class="wa-header-bar">
+              <span class="wa-back">&larr;</span>
+              <div class="wa-avatar"><img src="/images/aiyelet-logo-192.png" alt="Aiyelet" /></div>
+              <div class="wa-header-info">
+                <div class="wa-name">AiYelet</div>
+                <div class="wa-status">online</div>
+              </div>
+            </div>
+            <div class="wa-chat-body">
+              <div class="wa-msg wa-msg-out">
+                <div>
+                  <span data-he>היי, תספורת גברים ליום רביעי בבוקר</span
+                  ><span data-en>Hi, men's haircut Wednesday morning</span>
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:30</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  <span data-he>ביום רביעי 04/03 יש לי:<br />09:00, 10:00, 11:00<br /><br />מה מתאים?</span
+                  ><span data-en>On Wednesday 03/04 I have:<br />9:00 AM, 10:00 AM, 11:00 AM<br /><br />Which works for you?</span>
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:30</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div>
+                  <span data-he>10:00 בבקשה</span
+                  ><span data-en>10:00 AM please</span>
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  <span data-he>מצוין! נקבע לך תור:<br /><br />&#x2702;&#xFE0F; תספורת גברים<br />&#x1F4C5; יום רביעי, 04/03<br />&#x1F552; 10:00<br /><br />&#x1F517; הוסף ליומן: <span style="text-decoration: underline; color: #53bdeb">aiyelet.co/cal/abc123</span></span
+                  ><span data-en>Great! Your appointment is booked:<br /><br />&#x2702;&#xFE0F; Men's Haircut<br />&#x1F4C5; Wednesday, 03/04<br />&#x1F552; 10:00 AM<br /><br />&#x1F517; Add to calendar: <span style="text-decoration: underline; color: #53bdeb">aiyelet.co/cal/abc123</span></span>
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span>
+                </div>
+              </div>
+            </div>
+            <div class="wa-input-bar">
+              <div class="wa-input-field">
+                <span data-he>הקלידו הודעה</span
+                ><span data-en>Type a message</span>
+              </div>
+              <div class="wa-input-mic">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Trust Bar ===== -->
+    <section class="trust section-light">
+      <div class="container">
+        <div class="trust-item reveal">
+          <div class="trust-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg>
+          </div>
+          <div class="trust-value">24/7</div>
+          <div class="trust-label">
+            <span data-he>זמינות מלאה</span
+            ><span data-en>Full Availability</span>
+          </div>
+        </div>
+        <div class="trust-item reveal reveal-delay-1">
+          <div class="trust-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path d="M3 5h12M9 3v2m1.048 3.5A3.5 3.5 0 0016 8c0 2-3 3-3 3" />
+              <path
+                d="M12.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z"
+              />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+          </div>
+          <div class="trust-value">
+            <span data-he>3 שפות</span><span data-en>3 Languages</span>
+          </div>
+          <div class="trust-label">
+            <span data-he>עברית, ערבית ואנגלית</span
+            ><span data-en>Hebrew, Arabic &amp; English</span>
+          </div>
+        </div>
+        <div class="trust-item reveal reveal-delay-2">
+          <div class="trust-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+              <path d="M9 16l2 2 4-4" />
+            </svg>
+          </div>
+          <div class="trust-value">
+            <span data-he>6 ספקים</span><span data-en>6 Providers</span>
+          </div>
+          <div class="trust-label">
+            <span data-he>אינטגרציות לוחות זמנים</span
+            ><span data-en>Scheduling Integrations</span>
+          </div>
+        </div>
+        <div class="trust-item reveal reveal-delay-3">
+          <div class="trust-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <div class="trust-value">
+            <span data-he>דקות</span><span data-en>Minutes</span>
+          </div>
+          <div class="trust-label">
+            <span data-he>הגדרה מהירה</span><span data-en>Quick Setup</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section class="features section-light" id="features">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">
+            <span data-he>תכונות</span><span data-en>Features</span>
+          </div>
+          <h2 class="section-title">
+            <span data-he>כל מה שהעסק שלך צריך</span>
+            <span data-en>Everything Your Business Needs</span>
+          </h2>
+          <p class="section-desc">
+            <span data-he
+              >פלטפורמה מלאה לשירות לקוחות אוטומטי דרך וואטסאפ, מונעת על ידי
+              איילת.</span
+            >
+            <span data-en
+              >A complete platform for automated customer service through
+              WhatsApp, powered by AiYelet.</span
+            >
+          </p>
+        </div>
+        <div class="features-grid">
+          <!-- Feature 1: Meet Aiyelet -->
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+                />
+                <path
+                  d="M9.5 10h.01M14.5 10h.01M9.5 14c.83.67 1.87 1 3 1s2.17-.33 3-1"
+                  opacity="0.6"
+                />
+              </svg>
+            </div>
+            <h3>
+              <span data-he>הכירו את איילת</span
+              ><span data-en>Meet AiYelet</span>
+            </h3>
+            <p>
+              <span data-he
+                >מופעלת על ידי מודל בינה מלאכותית, עם אישיות מותאמת אישית. מדברת עברית,
+                ערבית ואנגלית בצורה טבעית. מבינה גם תמונות והודעות קוליות.</span
+              ><span data-en
+                >Powered by AI with a custom personality. Speaks Hebrew,
+                Arabic, and English naturally. Understands images and voice
+                messages too.</span
+              >
+            </p>
+          </div>
+          <!-- Feature 2: Self-Learning Knowledge Base -->
+          <div class="feature-card reveal reveal-delay-1">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+                <circle cx="18" cy="6" r="3" opacity="0.6" />
+                <path d="M16.5 4.5l3 3" opacity="0.6" />
+              </svg>
+            </div>
+            <h3>
+              <span data-he>מאגר ידע שלומד בעצמו</span
+              ><span data-en>Self-Learning Knowledge Base</span>
+            </h3>
+            <p>
+              <span data-he
+                >סורקת את האתר שלך, מזהה שאלות ללא מענה, ובונה בסיס ידע שגדל
+                אוטומטית משיחות אמיתיות.</span
+              ><span data-en
+                >Scrapes your website, detects unanswered questions, and builds
+                an auto-growing Q&amp;A base from real conversations.</span
+              >
+            </p>
+          </div>
+          <!-- Feature 3: Scheduling with 6 Providers -->
+          <div class="feature-card reveal reveal-delay-2">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+                <path d="M9 16l2 2 4-4" opacity="0.8" />
+              </svg>
+            </div>
+            <h3>
+              <span data-he>קביעת תורים עם 6 ספקים</span
+              ><span data-en>Scheduling with 6 Providers</span>
+            </h3>
+            <p>
+              <span data-he
+                >Google Calendar, Calendly, Cal.com, Acuity, Square, או מערכת
+                מובנית. הלקוחות קובעים תורים ישירות בוואטסאפ.</span
+              ><span data-en
+                >Google Calendar, Calendly, Cal.com, Acuity, Square, or
+                built-in. Customers book appointments directly in
+                WhatsApp.</span
+              >
+            </p>
+          </div>
+          <!-- Feature 4: Escalation + Telegram Alerts -->
+          <div class="feature-card reveal reveal-delay-1">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 00-3-3.87" />
+                <path d="M16 3.13a4 4 0 010 7.75" opacity="0.6" />
+              </svg>
+            </div>
+            <h3>
+              <span data-he>העברה לנציג + התראות טלגרם</span
+              ><span data-en>Escalation + Telegram Alerts</span>
+            </h3>
+            <p>
+              <span data-he
+                >מעבר חלק לנציג אנושי עם התראות טלגרם לבעל העסק על הסלמות
+                והזמנות בשפה המוגדרת.</span
+              ><span data-en
+                >Seamless human handoff with Telegram boss notifications for
+                escalations and bookings in your configured language.</span
+              >
+            </p>
+          </div>
+          <!-- Feature 5: Customer Memory & Summarization -->
+          <div class="feature-card reveal reveal-delay-2">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"
+                />
+                <path d="M9 21h6" opacity="0.6" />
+                <path d="M10 17v-2.5M14 17v-2.5" opacity="0.4" />
+              </svg>
+            </div>
+            <h3>
+              <span data-he>זיכרון לקוחות ותמצות</span
+              ><span data-en>Customer Memory &amp; Summarization</span>
+            </h3>
+            <p>
+              <span data-he
+                >שומרת עובדות על לקוחות לאורך שיחות ומתמצתת אוטומטית שיחות
+                ארוכות (20+ הודעות) לשירות רציף.</span
+              ><span data-en
+                >Stores persistent customer facts across conversations and
+                auto-summarizes long chats (20+ messages) for continuity.</span
+              >
+            </p>
+          </div>
+          <!-- Feature 6: One-Click WhatsApp Setup -->
+          <div class="feature-card reveal reveal-delay-3">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"
+                />
+                <path
+                  d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"
+                />
+              </svg>
+            </div>
+            <h3>
+              <span data-he>חיבור וואטסאפ בלחיצה</span
+              ><span data-en>One-Click WhatsApp Setup</span>
+            </h3>
+            <p>
+              <span data-he
+                >תהליך Embedded Signup חלק, ללא צורך בהגדרה טכנית. חברו את מספר
+                הוואטסאפ העסקי שלכם ברגע.</span
+              ><span data-en
+                >Smooth Embedded Signup flow, no technical setup needed. Connect
+                your business WhatsApp number instantly.</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Industries ===== -->
+    <section class="industries" id="industries">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">
+            <span data-he>תעשיות</span><span data-en>Industries</span>
+          </div>
+          <h2 class="section-title" style="color: #fff">
+            <span data-he>בנויה לכל סוג של עסק</span>
+            <span data-en>Built for Every Business</span>
+          </h2>
+        </div>
+        <div class="industries-grid">
+          <div class="industry-card reveal">
+            <span class="industry-emoji">&#x1F487;</span>
+            <h3>
+              <span data-he>מספרות ויופי</span
+              ><span data-en>Hair &amp; Beauty Salons</span>
+            </h3>
+            <p>
+              <span data-he>קביעת תורים, שירותים ומחירים, תזכורות ללקוחות.</span
+              ><span data-en
+                >Appointment booking, services &amp; pricing, customer
+                reminders.</span
+              >
+            </p>
+          </div>
+          <div class="industry-card reveal reveal-delay-1">
+            <span class="industry-emoji">&#x1FA7A;</span>
+            <h3>
+              <span data-he>מרפאות ורופאים</span
+              ><span data-en>Clinics &amp; Doctors</span>
+            </h3>
+            <p>
+              <span data-he>ניהול תורים, מידע רפואי בסיסי, העברה למזכירות.</span
+              ><span data-en
+                >Appointment management, basic medical info, front-desk
+                escalation.</span
+              >
+            </p>
+          </div>
+          <div class="industry-card reveal reveal-delay-2">
+            <span class="industry-emoji">&#x1F37D;&#xFE0F;</span>
+            <h3>
+              <span data-he>מסעדות ובתי קפה</span
+              ><span data-en>Restaurants &amp; Cafes</span>
+            </h3>
+            <p>
+              <span data-he>תפריט, שעות פעילות, הזמנת מקומות, מבצעים.</span
+              ><span data-en
+                >Menu info, opening hours, reservations, promotions.</span
+              >
+            </p>
+          </div>
+          <div class="industry-card reveal reveal-delay-3">
+            <span class="industry-emoji">&#x1F3CB;&#xFE0F;</span>
+            <h3>
+              <span data-he>חדרי כושר וסטודיו</span
+              ><span data-en>Gyms &amp; Studios</span>
+            </h3>
+            <p>
+              <span data-he>לוח שיעורים, הרשמה לשיעורים, מידע על מנויים.</span
+              ><span data-en
+                >Class schedules, class registration, membership info.</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== How it Works ===== -->
+    <section class="how-it-works section-light" id="how-it-works">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">
+            <span data-he>איך זה עובד</span><span data-en>How it Works</span>
+          </div>
+          <h2 class="section-title">
+            <span data-he>שלושה צעדים פשוטים</span>
+            <span data-en>Three Simple Steps</span>
+          </h2>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-num">1</div>
+            <h3>
+              <span data-he>חברו את מספר הוואטסאפ</span
+              ><span data-en>Connect Your WhatsApp Number</span>
+            </h3>
+            <p>
+              <span data-he
+                >חברו את מספר הוואטסאפ העסקי שלכם דרך Meta Cloud API תוך
+                דקות.</span
+              ><span data-en
+                >Connect your business WhatsApp number through Meta Cloud API in
+                minutes.</span
+              >
+            </p>
+          </div>
+          <div class="step reveal reveal-delay-2">
+            <div class="step-num">2</div>
+            <h3>
+              <span data-he>הגדירו את איילת</span
+              ><span data-en>Configure AiYelet</span>
+            </h3>
+            <p>
+              <span data-he
+                >הגדירו את האישיות, סרקו את האתר שלכם, חברו לוח זמנים, והכל
+                מוכן.</span
+              ><span data-en
+                >Set the personality, scrape your website, connect your
+                calendar, and you're all set.</span
+              >
+            </p>
+          </div>
+          <div class="step reveal reveal-delay-4">
+            <div class="step-num">3</div>
+            <h3>
+              <span data-he>עובדת 24/7 בשבילכם</span
+              ><span data-en>Works 24/7 For You</span>
+            </h3>
+            <p>
+              <span data-he
+                >איילת עונה ללקוחות, קובעת תורים, ומעבירה לכם כשצריך -
+                סביב השעון.</span
+              ><span data-en
+                >AiYelet answers customers, books appointments, and escalates
+                when needed - around the clock.</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Demo ===== -->
+    <section class="demo section-deeper" id="demo">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">
+            <span data-he>הדגמה</span><span data-en>Live Demo</span>
+          </div>
+          <h2 class="section-title">
+            <span data-he>ככה זה נראה בפועל</span>
+            <span data-en>See It in Action</span>
+          </h2>
+          <p class="section-desc">
+            <span data-he
+              >שיחות וואטסאפ אמיתיות - קביעת תורים, זיהוי תמונות,
+              והבנת הודעות קוליות. הכל אוטומטי.</span
+            >
+            <span data-en
+              >Real WhatsApp conversations - appointment booking, image
+              recognition, and voice understanding. All automated.</span
+            >
+          </p>
+        </div>
+        <div class="demo-tabs reveal">
+          <div class="demo-tabs-inner">
+            <button class="active" onclick="switchDemo('booking')">
+              <span data-he>מספרה &#x2702;&#xFE0F;</span><span data-en>Salon &#x2702;&#xFE0F;</span>
+            </button>
+            <button onclick="switchDemo('media')">
+              <span data-he>מוסך &#x1F527;</span><span data-en>Garage &#x1F527;</span>
+            </button>
+          </div>
+        </div>
+        <div class="demo-content active" id="demo-booking">
+        <div class="demo-phone reveal">
+          <div class="wa-phone-notch"></div>
+          <div class="wa-header-bar">
+            <span class="wa-back">&larr;</span>
+            <div class="wa-avatar"><svg viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="17" fill="#ffffff"/><text x="17" y="22" text-anchor="middle" font-size="16">&#x2702;&#xFE0F;</text></svg></div>
+            <div class="wa-header-info">
+              <div class="wa-name"><span data-he>מספרת ביוטי &#x2728;</span><span data-en>Beauty Salon &#x2728;</span></div>
+              <div class="wa-status">online</div>
+            </div>
+          </div>
+          <div class="wa-chat-body" id="demo-chat">
+            <!-- Hebrew conversation -->
+            <div class="demo-conv-he">
+              <div class="wa-msg wa-msg-out">
+                <div>היי, כמה עולה תספורת אצלכם?</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:30</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  היי! המחירים שלנו:<br />&#x2702;&#xFE0F; תספורת גברים &ndash;
+                  &#8362;80 (30 דק׳)<br />&#x1F487; תספורת נשים &ndash;
+                  &#8362;150 (45 דק׳)<br />&#x1F3A8; צבע שיער &ndash; &#8362;250
+                  (90 דק׳)<br /><br />מה עוד אפשר לעזור?
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:30</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div>ואתם פתוחים בימי שישי?</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  כן! א׳&ndash;ה׳ 9:00&ndash;19:00, שישי 9:00&ndash;14:00.<br />רוצה
+                  לקבוע תור? &#x1F60A;
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div>כן! תספורת גברים ליום רביעי בבוקר</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  ביום רביעי 04/03 יש לי:<br />
+                  09:00, 10:00, 11:00<br /><br />מה מתאים?
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div>10:00 בבקשה</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:32</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  מצוין! נקבע לך תור:<br /><br />&#x2702;&#xFE0F; תספורת
+                  גברים<br />&#x1F4C5; יום רביעי, 04/03<br />&#x1F552; 10:00<br /><br />&#x1F517;
+                  הוסף ליומן:
+                  <span style="text-decoration: underline; color: #53bdeb"
+                    >aiyelet.co/cal/abc123</span
+                  >
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:32</span>
+                </div>
+              </div>
+            </div>
+            <!-- English conversation -->
+            <div class="demo-conv-en">
+              <div class="wa-msg wa-msg-out">
+                <div>Hi, how much is a haircut?</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:30</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  Hey! Here are our prices:<br />&#x2702;&#xFE0F; Men's Haircut
+                  &ndash; $40 (30 min)<br />&#x1F487; Women's Haircut &ndash;
+                  $70 (45 min)<br />&#x1F3A8; Hair Coloring &ndash; $120 (90
+                  min)<br /><br />Anything else I can help with?
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:30</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div>Are you open on Fridays?</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  Yes! Sun&ndash;Thu 9AM&ndash;7PM, Friday 9AM&ndash;2PM.<br />Would
+                  you like to book? &#x1F60A;
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div>Yes! Men's haircut, Wednesday morning</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  On Wednesday 03/04 I have:<br />
+                  9:00 AM, 10:00 AM, 11:00 AM<br /><br />Which works for you?
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:31</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div>10:00 AM please</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:32</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  Great! Your appointment is booked:<br /><br />&#x2702;&#xFE0F;
+                  Men's Haircut<br />&#x1F4C5; Wednesday, 03/04<br />&#x1F552;
+                  10:00 AM<br /><br />&#x1F517; Add to calendar:
+                  <span style="text-decoration: underline; color: #53bdeb"
+                    >aiyelet.co/cal/abc123</span
+                  >
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">14:32</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wa-input-bar">
+            <div class="wa-input-field">
+              <span data-he>הקלידו הודעה</span
+              ><span data-en>Type a message</span>
+            </div>
+            <div class="wa-input-mic">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
+                  fill="#fff"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="demo-content" id="demo-media">
+        <div class="demo-phone reveal">
+          <div class="wa-phone-notch"></div>
+          <div class="wa-header-bar">
+            <span class="wa-back">&larr;</span>
+            <div class="wa-avatar"><svg viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="17" fill="#4a6a8a"/><text x="17" y="22" text-anchor="middle" font-size="16">&#x1F527;</text></svg></div>
+            <div class="wa-header-info">
+              <div class="wa-name"><span data-he>מוסך אברהמי &#x1F527;</span><span data-en>Avrahami Garage &#x1F527;</span></div>
+              <div class="wa-status">online</div>
+            </div>
+          </div>
+          <div class="wa-chat-body" id="demo-chat-media">
+            <!-- Hebrew conversation -->
+            <div class="demo-conv-he">
+              <div class="wa-msg wa-msg-out">
+                <div>היי, מה קורה?</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:44</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out wa-msg-image">
+                <div class="wa-img-placeholder"><img src="/images/oil_pressure.png" alt="Oil pressure warning light on dashboard" style="width:100%;height:100%;object-fit:cover;border-radius:6px;" /></div>
+                <div class="wa-img-caption">נדלקה לי הנורה הזאת</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:45</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  היי! לפי התמונה, זו נורית לחץ שמן.
+                  זה אומר שלחץ השמן במנוע נמוך מדי &ndash; חשוב
+                  לא להמשיך לנסוע ככה.<br />רוצה לקבוע תור דחוף?
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:45</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div class="wa-msg-voice">
+                  <div class="wa-voice-play"></div>
+                  <div class="wa-voice-waves">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <span class="wa-voice-duration">0:12</span>
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:46</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  הבנתי, המנוע מתחמם יותר מדי ויש רעש מוזר.
+                  נשמע כמו בעיית משאבת שמן או דליפה.<br /><br />יש לי תורים מחר:
+                  09:00, 11:00, 14:00
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:46</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div>11 בבקשה</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:47</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  מצוין! נקבע לך תור:<br /><br />&#x1F527;
+                  בדיקה<br />&#x1F4C5; יום שלישי, 25/03<br />&#x1F552;
+                  11:00<br /><br />&#x1F517; הוסף ליומן:
+                  <span style="text-decoration: underline; color: #53bdeb"
+                    >aiyelet.co/cal/xyz789</span
+                  >
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:47</span>
+                </div>
+              </div>
+            </div>
+            <!-- English conversation -->
+            <div class="demo-conv-en">
+              <div class="wa-msg wa-msg-out">
+                <div>Hey, what's up?</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:44</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out wa-msg-image">
+                <div class="wa-img-placeholder"><img src="/images/oil_pressure.png" alt="Oil pressure warning light on dashboard" style="width:100%;height:100%;object-fit:cover;border-radius:6px;" /></div>
+                <div class="wa-img-caption">This light just came on</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:45</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  Hi! Based on the photo, that's an oil pressure
+                  warning light. It means your engine oil pressure is
+                  too low &ndash; important not to keep driving.<br />Want
+                  to book an urgent appointment?
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:45</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div class="wa-msg-voice">
+                  <div class="wa-voice-play"></div>
+                  <div class="wa-voice-waves">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <span class="wa-voice-duration">0:12</span>
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:46</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  Got it, the engine is overheating and there's a
+                  strange noise. Sounds like an oil pump issue or a
+                  leak.<br /><br />I have openings tomorrow:
+                  9:00 AM, 11:00 AM, 2:00 PM
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:46</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-out">
+                <div>11</div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:47</span
+                  ><span class="wa-msg-check">&#10003;&#10003;</span>
+                </div>
+              </div>
+              <div class="wa-msg wa-msg-in">
+                <div>
+                  Great! Your appointment is booked:<br /><br />&#x1F527;
+                  Checkup<br />&#x1F4C5; Tuesday,
+                  03/25<br />&#x1F552; 11:00 AM<br /><br />&#x1F517; Add
+                  to calendar:
+                  <span style="text-decoration: underline; color: #53bdeb"
+                    >aiyelet.co/cal/xyz789</span
+                  >
+                </div>
+                <div class="wa-msg-meta">
+                  <span class="wa-msg-time">16:47</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wa-input-bar">
+            <div class="wa-input-field">
+              <span data-he>הקלידו הודעה</span
+              ><span data-en>Type a message</span>
+            </div>
+            <div class="wa-input-mic">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
+                  fill="#fff"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Comparison ===== -->
+    <section class="comparison section-light">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">
+            <span data-he>למה איילת?</span><span data-en>Why AiYelet?</span>
+          </div>
+          <h2 class="section-title">
+            <span data-he>ההבדל ברור</span>
+            <span data-en>The Difference Is Clear</span>
+          </h2>
+        </div>
+        <div class="comparison-table reveal">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th><span data-he>ידני</span><span data-en>Manual</span></th>
+                <th class="col-aiyelet">
+                  <span data-he>עם איילת</span><span data-en>With AiYelet</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span data-he>זמינות</span><span data-en>Availability</span>
+                </td>
+                <td>
+                  <span data-he>שעות עבודה</span
+                  ><span data-en>Business hours</span>
+                </td>
+                <td class="col-aiyelet">24/7</td>
+              </tr>
+              <tr>
+                <td>
+                  <span data-he>זמן תגובה</span
+                  ><span data-en>Response time</span>
+                </td>
+                <td>
+                  <span data-he>דקות-שעות</span
+                  ><span data-en>Minutes-hours</span>
+                </td>
+                <td class="col-aiyelet">
+                  <span data-he>שניות</span><span data-en>Seconds</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span data-he>שפות</span><span data-en>Languages</span></td>
+                <td>1-2</td>
+                <td class="col-aiyelet">3</td>
+              </tr>
+              <tr>
+                <td>
+                  <span data-he>קביעת תורים</span
+                  ><span data-en>Scheduling</span>
+                </td>
+                <td><span data-he>ידני</span><span data-en>Manual</span></td>
+                <td class="col-aiyelet">
+                  <span data-he>אוטומטי</span><span data-en>Automated</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span data-he>זיכרון לקוחות</span
+                  ><span data-en>Customer memory</span>
+                </td>
+                <td>&#x2717;</td>
+                <td class="col-aiyelet">&#x2713;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">
+            <span data-he>מה אומרים עלינו</span
+            ><span data-en>Testimonials</span>
+          </div>
+          <h2 class="section-title" style="color: #fff">
+            <span data-he>עסקים שכבר עובדים עם איילת</span>
+            <span data-en>Businesses Already Using AiYelet</span>
+          </h2>
+        </div>
+        <div class="testimonials-grid" id="testimonials-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== Pricing ===== -->
+    <section class="pricing section-light" id="pricing">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">
+            <span data-he>מחירון</span><span data-en>Pricing</span>
+          </div>
+          <h2 class="section-title">
+            <span data-he>תוכניות ומחירון</span>
+            <span data-en>Plans & Pricing</span>
+          </h2>
+        </div>
+
+        <div class="pricing-toggle reveal">
+          <div class="pricing-toggle-inner">
+            <button
+              class="active"
+              id="pricing-label-monthly"
+              onclick="setPricingPeriod('monthly')"
+            >
+              <span data-he>חודשי</span><span data-en>Monthly</span>
+            </button>
+            <button
+              id="pricing-label-annual"
+              onclick="setPricingPeriod('annual')"
+            >
+              <span data-he>שנתי</span><span data-en>Annual</span>
+            </button>
+          </div>
+        </div>
+        <div class="pricing-save-wrap">
+          <span
+            class="pricing-save-badge"
+            id="pricing-save-badge"
+            style="opacity: 0"
+          >
+            <span data-he>חיסכון 10-12%</span><span data-en>Save 10-12%</span>
+          </span>
+        </div>
+
+        <div class="pricing-cards">
+          <!-- Starter -->
+          <div class="pricing-card reveal reveal-delay-1">
+            <div class="pricing-card-header">
+              <div class="pricing-plan-name">
+                <span data-he>בסיסי</span><span data-en>Starter</span>
+              </div>
+              <div class="pricing-price">
+                <span class="currency">&#x20AA;</span
+                ><span id="price-starter">199</span
+                ><span class="period"
+                  >/<span data-he>חודש</span><span data-en>mo</span></span
+                >
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li>
+                <span class="icon-check">&#x2713;</span>
+                <span data-he>צ'אט AI</span><span data-en>AI Chat</span>
+              </li>
+              <li>
+                <span class="icon-check">&#x2713;</span>
+                <span data-he>זיכרון לקוחות</span
+                ><span data-en>Customer Memory</span>
+              </li>
+              <li>
+                <span class="icon-check">&#x2713;</span>
+                <span data-he>העברה לבעל העסק</span
+                ><span data-en>Escalation to Human</span>
+              </li>
+              <li class="disabled">
+                <span class="icon-check">&#x2717;</span>
+                <span data-he>ניהול תורים</span
+                ><span data-en>Scheduling / Appointments</span>
+              </li>
+              <li class="disabled">
+                <span class="icon-check">&#x2717;</span>
+                <span data-he>מאגר ידע חכם</span
+                ><span data-en>Smart Knowledge Gap Management</span>
+              </li>
+            </ul>
+            <a href="https://wa.me/972500000000" class="pricing-cta">
+              <span data-he>התחילו תקופת ניסיון</span
+              ><span data-en>Start Free Trial</span>
+            </a>
+          </div>
+
+          <!-- Business (Recommended) -->
+          <div class="pricing-card recommended reveal reveal-delay-2">
+            <div class="pricing-badge">
+              <span data-he>מומלץ</span><span data-en>Recommended</span>
+            </div>
+            <div class="pricing-card-header">
+              <div class="pricing-plan-name">
+                <span data-he>מתקדם</span><span data-en>Business</span>
+              </div>
+              <div class="pricing-price">
+                <span class="currency">&#x20AA;</span
+                ><span id="price-business">399</span
+                ><span class="period"
+                  >/<span data-he>חודש</span><span data-en>mo</span></span
+                >
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li>
+                <span class="icon-check">&#x2713;</span>
+                <span data-he>צ'אט AI</span><span data-en>AI Chat</span>
+              </li>
+              <li>
+                <span class="icon-check">&#x2713;</span>
+                <span data-he>זיכרון לקוחות</span
+                ><span data-en>Customer Memory</span>
+              </li>
+              <li>
+                <span class="icon-check">&#x2713;</span>
+                <span data-he>העברה לבעל העסק</span
+                ><span data-en>Escalation to Human</span>
+              </li>
+              <li>
+                <span class="icon-check">&#x2713;</span>
+                <span data-he>ניהול תורים</span
+                ><span data-en>Scheduling / Appointments</span>
+              </li>
+              <li>
+                <span class="icon-check">&#x2713;</span>
+                <span data-he>מאגר ידע חכם</span
+                ><span data-en>Smart Knowledge Gap Management</span>
+              </li>
+            </ul>
+            <a href="https://wa.me/972500000000" class="pricing-cta">
+              <span data-he>התחילו תקופת ניסיון</span
+              ><span data-en>Start Free Trial</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="pricing-trial-note reveal">
+          <strong
+            ><span data-he>30 יום ניסיון חינם</span
+            ><span data-en>30-day free trial</span></strong
+          >
+          -
+          <span data-he>ללא כרטיס אשראי</span
+          ><span data-en>No credit card required</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq section-dark" id="faq">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">
+            <span data-he>שאלות נפוצות</span><span data-en>FAQ</span>
+          </div>
+          <h2 class="section-title">
+            <span data-he>שאלות ותשובות</span>
+            <span data-en>Questions &amp; Answers</span>
+          </h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span
+                ><span data-he>באילו שפות איילת מדברת?</span
+                ><span data-en>What languages does AiYelet speak?</span></span
+              >
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <span data-he
+                  >איילת מדברת עברית, ערבית ואנגלית בצורה טבעית. היא מזהה
+                  אוטומטית את שפת הלקוח ועונה באותה שפה.</span
+                >
+                <span data-en
+                  >AiYelet speaks Hebrew, Arabic, and English naturally. She
+                  automatically detects the customer's language and responds
+                  accordingly.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span
+                ><span data-he>כמה זמן לוקח להתחיל?</span
+                ><span data-en>How long does setup take?</span></span
+              >
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <span data-he
+                  >ההגדרה לוקחת דקות ספורות. חברו את מספר הוואטסאפ, הגדירו את
+                  איילת, והיא תסרוק את האתר שלכם בעצמה - זה הכל.</span
+                >
+                <span data-en
+                  >Setup takes just a few minutes. Connect your WhatsApp number,
+                  configure AiYelet, and she'll scrape your website
+                  automatically - that's it.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-2">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span
+                ><span data-he>איך עובדת קביעת התורים?</span
+                ><span data-en
+                  >How does appointment scheduling work?</span
+                ></span
+              >
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <span data-he
+                  >איילת משתמשת בכלים חכמים כדי לבדוק זמינות, להציע תורים ולקבוע
+                  אותם. תמיכה ב-Google Calendar, Calendly, Cal.com, Acuity,
+                  Square, או מערכת מובנית - הלקוח מקבל אישור מיידי
+                  בוואטסאפ.</span
+                >
+                <span data-en
+                  >AiYelet uses smart tools to check availability, suggest
+                  slots, and book appointments. Supports Google Calendar,
+                  Calendly, Cal.com, Acuity, Square, or built-in - the
+                  customer gets instant confirmation in WhatsApp.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-3">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span
+                ><span data-he>מה קורה כשאיילת לא יודעת לענות?</span
+                ><span data-en
+                  >What happens when AiYelet can't answer?</span
+                ></span
+              >
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <span data-he
+                  >איילת מעבירה את השיחה באופן חלק לנציג אנושי (אתם!) עם סיכום
+                  שיחה מלא. תוכלו לענות ישירות בוואטסאפ ולהחזיר את השיחה לאיילת
+                  כשתרצו.</span
+                >
+                <span data-en
+                  >AiYelet seamlessly transfers the conversation to a human
+                  agent (you!) with a full conversation summary. You can reply
+                  directly in WhatsApp and hand back to AiYelet whenever you
+                  want.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-4">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span
+                ><span data-he>האם אפשר להתאים את האישיות של איילת?</span
+                ><span data-en
+                  >Can I customize AiYelet's personality?</span
+                ></span
+              >
+              <svg
+                class="faq-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <span data-he
+                  >בהחלט! אתם כותבים את הנחיות המערכת (System Prompt) שמגדירות
+                  את האישיות, הטון, וההתנהגות של איילת - בדיוק כמו שאתם
+                  רוצים.</span
+                >
+                <span data-en
+                  >Absolutely! You write the system prompt that defines
+                  AiYelet's personality, tone, and behavior - exactly the
+                  way you want.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section">
+      <div class="container reveal">
+        <h2>
+          <span data-he>מוכנים להכיר את איילת?</span>
+          <span data-en>Ready to Meet AiYelet?</span>
+        </h2>
+        <p>
+          <span data-he>הצטרפו לעסקים שכבר עובדים חכם עם איילת בוואטסאפ.</span>
+          <span data-en
+            >Join businesses that already work smarter with AiYelet on
+            WhatsApp.</span
+          >
+        </p>
+        <a
+          href="https://wa.me/972500000000"
+          class="btn btn-primary"
+          style="font-size: 1.1rem; padding: 16px 40px"
+        >
+          <span data-he>דברו איתנו בוואטסאפ</span>
+          <span data-en>Chat with Us on WhatsApp</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+            />
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.344 0-4.524-.8-6.254-2.142l-.437-.356-3.168 1.062 1.062-3.168-.356-.437A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-main">
+          <!-- Brand column -->
+          <div class="footer-brand">
+            <img src="/images/aiyelet-stacked-dark-transparent.png" alt="AiYelet" />
+          </div>
+          <!-- Links column -->
+          <div>
+            <div class="footer-col-title">
+              <span data-he>ניווט</span><span data-en>Navigate</span>
+            </div>
+            <div class="footer-links">
+              <a href="#features"><span data-he>תכונות</span><span data-en>Features</span></a>
+              <a href="#faq"><span data-he>שאלות נפוצות</span><span data-en>FAQ</span></a>
+              <a href="/privacy.html"><span data-he>מדיניות פרטיות</span><span data-en>Privacy Policy</span></a>
+              <a href="/terms.html"><span data-he>תנאי שימוש</span><span data-en>Terms of Service</span></a>
+            </div>
+          </div>
+          <!-- Contact column -->
+          <div>
+            <div class="footer-col-title">
+              <span data-he>צרו קשר</span><span data-en>Contact</span>
+            </div>
+            <div class="footer-contact">
+              <div class="footer-contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                <a href="mailto:info@aiyelet.co">info@aiyelet.co</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+          <div class="footer-copy">&copy; 2025-2026 Aiyelet by LUCON LABS</div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* ===== Language Toggle ===== */
+      function setLang(lang) {
+        const isHe = lang === "he";
+        document.documentElement.classList.toggle("he", isHe);
+        document.documentElement.dir = isHe ? "rtl" : "ltr";
+        document.documentElement.lang = lang;
+        document.title = isHe
+          ? "AIyelet - איילת, עוזרת וואטסאפ לעסקים"
+          : "AIyelet - Smart WhatsApp Assistant for Businesses";
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc)
+          desc.content = isHe
+            ? "AiYelet - איילת, עוזרת וואטסאפ חכמה לעסקים ישראליים. שירות לקוחות, קביעת תורים, והעברה לנציג - הכל אוטומטי, 24/7."
+            : "AiYelet - Smart WhatsApp assistant for Israeli businesses. Customer service, appointment scheduling, and human escalation - all automated, 24/7.";
+        // Update toggle buttons
+        document.querySelectorAll(".lang-toggle").forEach((t) => {
+          t.querySelectorAll("button").forEach((b) => {
+            b.classList.toggle(
+              "active",
+              b.textContent.trim().endsWith(isHe ? "HE" : "EN"),
+            );
+          });
+        });
+        localStorage.setItem("aiyelet-lang", lang);
+        // Restart demo animations when language changes
+        restartDemoAnimations();
+      }
+      // Restore saved language
+      const saved = localStorage.getItem("aiyelet-lang");
+      if (saved) setLang(saved);
+
+      /* ===== Pricing Toggle ===== */
+      let pricingAnnual = false;
+      const PRICES = {
+        starter: { monthly: 199, annual: 179 },
+        business: { monthly: 399, annual: 349 },
+      };
+      function setPricingPeriod(period) {
+        pricingAnnual = period === "annual";
+        updatePricingUI();
+      }
+      function updatePricingUI() {
+        const lm = document.getElementById("pricing-label-monthly");
+        const la = document.getElementById("pricing-label-annual");
+        const sb = document.getElementById("pricing-save-badge");
+        if (!lm) return;
+        lm.classList.toggle("active", !pricingAnnual);
+        la.classList.toggle("active", pricingAnnual);
+        sb.style.opacity = pricingAnnual ? "1" : "0";
+        const key = pricingAnnual ? "annual" : "monthly";
+        document.getElementById("price-starter").textContent =
+          PRICES.starter[key];
+        document.getElementById("price-business").textContent =
+          PRICES.business[key];
+      }
+
+      /* ===== Header Scroll ===== */
+      const header = document.getElementById("header");
+      window.addEventListener(
+        "scroll",
+        () => {
+          header.classList.toggle("scrolled", window.scrollY > 40);
+        },
+        { passive: true },
+      );
+
+      /* ===== Mobile Menu ===== */
+      const mobileToggle = document.getElementById("mobile-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
+      function closeMobile() {
+        mobileMenu.classList.remove("open");
+      }
+
+      /* ===== FAQ Accordion ===== */
+      function toggleFaq(btn) {
+        const item = btn.closest(".faq-item");
+        const answer = item.querySelector(".faq-answer");
+        const isActive = item.classList.contains("active");
+        // Close all
+        document.querySelectorAll(".faq-item.active").forEach((i) => {
+          i.classList.remove("active");
+          i.querySelector(".faq-answer").style.maxHeight = null;
+        });
+        // Toggle current
+        if (!isActive) {
+          item.classList.add("active");
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      }
+
+      /* ===== Scroll Reveal ===== */
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      /* ===== Demo Animation Restart on Scroll ===== */
+      function restartDemoAnimations() {
+        document.querySelectorAll('.demo-content.active .wa-msg').forEach((msg) => {
+          msg.style.animation = "none";
+          msg.offsetHeight; // force reflow
+          msg.style.animation = "";
+        });
+      }
+      function switchDemo(which) {
+        document.querySelectorAll('.demo-content').forEach(el => {
+          el.classList.toggle('active', el.id === 'demo-' + which);
+        });
+        document.querySelectorAll('.demo-tabs-inner button').forEach((btn, i) => {
+          btn.classList.toggle('active', (i === 0 && which === 'booking') || (i === 1 && which === 'media'));
+        });
+        restartDemoAnimations();
+      }
+      const demoSection = document.getElementById("demo");
+      if (demoSection) {
+        const demoObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                restartDemoAnimations();
+              }
+            });
+          },
+          { threshold: 0.3 },
+        );
+        demoObserver.observe(demoSection);
+      }
+
+      /* ===== Testimonial Rotation ===== */
+      const testimonials = [
+        {
+          color: "#E8735A",
+          initialHe: "ש",
+          initialEn: "S",
+          nameHe: "שירן אביטל",
+          nameEn: "Shiran Avital",
+          roleHe: "מספרה, חיפה",
+          roleEn: "Hair Salon, Haifa",
+          textHe:
+            '"הייתי מבלה שעתיים ביום בטלפון - תורים, שינויים, ביטולים. מאז שאיילת נכנסה, הלקוחות קובעים לבד דרך הוואטסאפ, ואם משהו דחוף - היא מעבירה אליי מיד עם סיכום. חסכתי לעצמי חצי משרה."',
+          textEn:
+            '"I used to spend two hours a day on the phone - appointments, changes, cancellations. Since Aiyelet came on board, customers book on their own through WhatsApp, and if something\'s urgent she transfers to me with a full summary. It\'s like getting half an employee back."',
+        },
+        {
+          color: "#5B8DEF",
+          initialHe: "ל",
+          initialEn: "L",
+          nameHe: "ליאור צוקר",
+          nameEn: "Lior Tzuker",
+          roleHe: "מרפאת שיניים, תל אביב",
+          roleEn: "Dental Clinic, Tel Aviv",
+          textHe:
+            '"יש לנו מטופלים שמדברים עברית, ערבית ואנגלית. איילת עונה לכולם בשפה שלהם ושולחת לי התראה בטלגרם כשצריך את תשומת לבי. הניהול נהיה הרבה יותר חלק."',
+          textEn:
+            '"We have patients who speak Hebrew, Arabic, and English. Aiyelet answers everyone in their language and pings me on Telegram when something needs my attention. Running the clinic got a lot smoother."',
+        },
+        {
+          color: "#9B6DD7",
+          initialHe: "ר",
+          initialEn: "R",
+          nameHe: "רונית שפירא",
+          nameEn: "Ronit Shapira",
+          roleHe: "סטודיו פילאטיס, תל אביב",
+          roleEn: "Pilates Studio, Tel Aviv",
+          textHe:
+            '"ההגדרה הייתה מהירה, אבל לקח לי יום-יומיים לכוונן את הטון בדיוק כמו שרציתי - חם ורגוע, בסגנון של הסטודיו. מאז שזה מוכן, המתאמנות מקבלות תשובות מיידיות ואני יכולה להתמקד בהוראה."',
+          textEn:
+            '"Setup was quick, but it took me a day or two to fine-tune the tone to feel exactly right - warm and calm, matching the studio vibe. Once it was dialed in, my students get instant answers and I can focus on teaching."',
+        },
+        {
+          color: "#E09B3D",
+          initialHe: "א",
+          initialEn: "A",
+          nameHe: "אלון אברהמי",
+          nameEn: "Alon Avrahami",
+          roleHe: "מוסך אברהמי, תל אביב",
+          roleEn: "Avrahami Garage, Tel Aviv",
+          textHe:
+            '"לקוחות שולחים תמונה של הבעיה בוואטסאפ ואיילת מסבירה להם מה כנראה צריך לעשות ומתאמת הגעה. אני לא מפספס אף פנייה גם כשהידיים שלי שחורות משמן."',
+          textEn:
+            '"Customers send a photo of the problem on WhatsApp and Aiyelet explains what probably needs fixing and schedules a visit. I never miss a lead even when my hands are covered in grease."',
+        },
+        {
+          color: "#4ECDC4",
+          initialHe: "נ",
+          initialEn: "N",
+          nameHe: "נועה גולן",
+          nameEn: "Noa Golan",
+          roleHe: "קליניקה לרפואה משלימה, רעננה",
+          roleEn: "Holistic Health Clinic, Ra'anana",
+          textHe:
+            '"הלקוחות שלי שואלים הרבה שאלות לפני שהם קובעים טיפול. איילת עונה על הכל, ואם מישהו שואל משהו רפואי מורכב - היא מעבירה אליי בלי דרמה."',
+          textEn:
+            '"My clients ask tons of questions before booking a treatment. Aiyelet handles all of them, and if someone asks something medically complex she hands off to me without any drama."',
+        },
+        {
+          color: "#7C6FA0",
+          initialHe: "א",
+          initialEn: "O",
+          nameHe: "אופיר דודגר",
+          nameEn: "Ofir Dudger",
+          roleHe: "חברת שליחויות, גבעתיים",
+          roleEn: "Courier Company, Givatayim",
+          textHe:
+            '"לקוחות שלחו הודעות בכל שעה - איפה השליח, מתי מגיע, אפשר לשנות כתובת. איילת עונה לכולם מיד ומתאמת איתי רק כשצריך החלטה שלי. זה שחרר אותי לנהל את הצוות במקום לענות להודעות."',
+          textEn:
+            '"Customers were messaging at all hours - where\'s the courier, when will it arrive, can I change the address. Aiyelet answers everyone instantly and only loops me in when a decision is needed. It freed me up to manage the team instead of answering messages."',
+        },
+      ];
+
+      function buildTestimonialHTML(selected) {
+        const delays = ["", " reveal-delay-1", " reveal-delay-2"];
+        return selected
+          .map(
+            (t, i) => `
+          <div class="testimonial-card reveal${delays[i]}">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar" style="background: ${t.color}">
+                <span data-he>${t.initialHe}</span><span data-en>${t.initialEn}</span>
+              </div>
+              <div class="testimonial-meta">
+                <div class="testimonial-author">
+                  <span data-he>${t.nameHe}</span><span data-en>${t.nameEn}</span>
+                </div>
+                <div class="testimonial-role">
+                  <span data-he>${t.roleHe}</span><span data-en>${t.roleEn}</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-text">
+              <span data-he>${t.textHe}</span>
+              <span data-en>${t.textEn}</span>
+            </p>
+          </div>`,
+          )
+          .join("");
+      }
+
+      function applyTestimonialGrid(grid) {
+        grid.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+      }
+
+      function pickRandom3() {
+        const arr = [...testimonials];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr.slice(0, 3);
+      }
+
+      const grid = document.getElementById("testimonials-grid");
+      grid.innerHTML = buildTestimonialHTML(pickRandom3());
+      applyTestimonialGrid(grid);
+
+      setInterval(() => {
+        grid.classList.add("fading");
+        setTimeout(() => {
+          grid.innerHTML = buildTestimonialHTML(pickRandom3());
+          applyTestimonialGrid(grid);
+          grid.classList.remove("fading");
+        }, 400);
+      }, 18000);
+    </script>
+  </body>
+</html>
